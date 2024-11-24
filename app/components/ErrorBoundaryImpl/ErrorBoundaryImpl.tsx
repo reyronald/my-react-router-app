@@ -1,7 +1,7 @@
 import { isRouteErrorResponse } from "react-router"
 
 import { Centered } from "~/components/Centered/Centered"
-import { MyLink } from "~/components/MyLink/MyLink"
+import { StyledLink } from "~/components/StyledLink/StyledLink"
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,7 +9,7 @@ function Layout({ children }: { children: React.ReactNode }) {
       <div className="flex flex-col gap-6">
         {children}
 
-        <MyLink to="/">Go to the home page</MyLink>
+        <StyledLink to="/">Go to the home page</StyledLink>
       </div>
     </Centered>
   )
@@ -43,12 +43,12 @@ export function ErrorBoundaryImpl({ error }: { error: unknown }) {
       </Layout>
     )
   } else {
-    ;<Layout>
-      <H1>Unknown Error</H1>
-
-      <Pre>{String(error)}</Pre>
-
-      <Pre>{JSON.stringify(error, null, 2)}</Pre>
-    </Layout>
+    return (
+      <Layout>
+        <H1>Unknown Error</H1>
+        <Pre>{String(error)}</Pre>
+        <Pre>{JSON.stringify(error, null, 2)}</Pre>
+      </Layout>
+    )
   }
 }

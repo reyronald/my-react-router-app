@@ -1,5 +1,5 @@
 import { dehydrate, QueryClient } from "@tanstack/react-query"
-import { MyLink } from "~/components/MyLink/MyLink"
+import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { Route } from "./+types/Pokemon"
 import { Centered } from "~/components/Centered/Centered"
 import { prefetchPokemon, useGetPokemon } from "~/queries/pokemon"
@@ -36,7 +36,7 @@ export default function Pokemon({ params }: Route.ComponentProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <MyLink to="/pokemon">Back</MyLink>
+      <StyledLink to="/pokemon">Back</StyledLink>
 
       <h1 className="text-4xl font-bold mb-16">{pokemon.name}</h1>
 
@@ -53,9 +53,9 @@ export default function Pokemon({ params }: Route.ComponentProps) {
       <ul>
         {pokemon.abilities.map((ability) => (
           <li key={ability.ability.name}>
-            <MyLink to={`/ability/${ability.ability.name}`} state={pokemon.name}>
+            <StyledLink to={`/ability/${ability.ability.name}`} state={pokemon.name}>
               {ability.ability.name}
-            </MyLink>
+            </StyledLink>
           </li>
         ))}
       </ul>
@@ -65,9 +65,9 @@ export default function Pokemon({ params }: Route.ComponentProps) {
       <ul>
         {pokemon.moves.map((move) => (
           <li key={move.move.name}>
-            <MyLink to={`/move/${move.move.name}`} state={pokemon.name}>
+            <StyledLink to={`/move/${move.move.name}`} state={pokemon.name}>
               {move.move.name}
-            </MyLink>
+            </StyledLink>
           </li>
         ))}
       </ul>

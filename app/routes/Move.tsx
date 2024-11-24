@@ -1,6 +1,6 @@
 import { dehydrate, QueryClient } from "@tanstack/react-query"
 import { useLocation, Location } from "react-router"
-import { MyLink } from "~/components/MyLink/MyLink"
+import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { prefetchMove, useGetMoveSuspended } from "~/queries/move"
 import { Route } from "./+types/Move"
 import { Suspense } from "react"
@@ -39,7 +39,7 @@ export function MoveImpl({ params }: Route.ComponentProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <MyLink to={pokemonName ? `/pokemon/${pokemonName}` : "/pokemon"}>Back</MyLink>
+      <StyledLink to={pokemonName ? `/pokemon/${pokemonName}` : "/pokemon"}>Back</StyledLink>
 
       <h1 className="text-4xl font-bold">Move: {move.name}</h1>
 

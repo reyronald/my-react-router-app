@@ -1,6 +1,6 @@
 import { Location, useLocation } from "react-router"
 import { Centered } from "~/components/Centered/Centered"
-import { MyLink } from "~/components/MyLink/MyLink"
+import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { useGetAbility } from "~/queries/ability"
 import { Route } from "./+types/Ability"
 
@@ -46,7 +46,7 @@ export default function Ability({ params }: Route.ComponentProps) {
 
   return (
     <div className="flex flex-col gap-4">
-      <MyLink to={pokemonName ? `/pokemon/${pokemonName}` : "/pokemon"}>Back</MyLink>
+      <StyledLink to={pokemonName ? `/pokemon/${pokemonName}` : "/pokemon"}>Back</StyledLink>
 
       <h1 className="text-4xl font-bold">Ability: {ability.name}</h1>
 

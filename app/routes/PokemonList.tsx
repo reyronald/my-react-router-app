@@ -1,6 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query"
 import { useEffect } from "react"
-import { MyLink } from "~/components/MyLink/MyLink"
+import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { api } from "~/server/api"
 import { Route } from "./+types/PokemonList"
 import { prefetchPokemon } from "~/queries/pokemon"
@@ -30,7 +30,7 @@ export default function PokemonList({ loaderData }: Route.ComponentProps) {
       <ul>
         {loaderData.results.map((pokemon) => (
           <li key={pokemon.name}>
-            <MyLink to={`/pokemon/${pokemon.name}`}>{pokemon.name}</MyLink>
+            <StyledLink to={`/pokemon/${pokemon.name}`}>{pokemon.name}</StyledLink>
           </li>
         ))}
       </ul>
