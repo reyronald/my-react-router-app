@@ -1,13 +1,24 @@
+import { useQueryClient } from "@tanstack/react-query"
+import { useEffect } from "react"
+import { MyLink } from "~/components/MyLink/MyLink"
+import { pokemonQuery } from "~/queries/pokemon"
 import { api } from "~/server/api"
 import { Route } from "./+types/PokemonList"
-import { MyLink } from "~/components/MyLink/MyLink"
 
-export async function loader({ params }: Route.LoaderArgs) {
+export async function loader(_: Route.LoaderArgs) {
   const pokemonList = await api.getPokemonList()
   return pokemonList
 }
 
 export default function PokemonList({ loaderData }: Route.ComponentProps) {
+  const query = useQueryClient()
+
+  useEffect(() => {
+    for (const pokemon of loaderData.results) {
+      pokemonQuery.prefetchPokemon(query, pokemon.name)
+    }
+  }, [])
+
   return (
     <div className="flex h-screen justify-center my-12">
       <div>
