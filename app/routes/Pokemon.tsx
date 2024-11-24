@@ -1,12 +1,12 @@
 import { dehydrate, QueryClient } from "@tanstack/react-query"
 import { MyLink } from "~/components/MyLink/MyLink"
-import { pokemonQuery } from "~/queries/pokemon"
 import { Route } from "./+types/Pokemon"
+import { prefetchPokemon, usePokemon } from "~/queries/pokemon"
 
 export async function loader({ params }: Route.LoaderArgs) {
   const queryClient = new QueryClient()
 
-  await pokemonQuery.prefetchPokemon(queryClient, params.name)
+  await prefetchPokemon(queryClient, params.name)
 
   return { dehydratedState: dehydrate(queryClient) }
 }
@@ -16,7 +16,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 export async function clientLoader(_: Route.ClientLoaderArgs) {}
 
 export default function Pokemon({ params }: Route.ComponentProps) {
-  const { isPending, error, data } = pokemonQuery.usePokemon(params.name)
+  const { isPending, error, data } = usePokemon(params.name)
 
   if (isPending) return <div className="flex h-screen items-center justify-center">Loading...</div>
 
