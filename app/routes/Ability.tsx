@@ -49,10 +49,10 @@ export default function Ability({ params }: Route.ComponentProps) {
       <div className="flex flex-col gap-4">
         <MyLink to={pokemonName ? `/pokemon/${pokemonName}` : "/pokemon"}>Back</MyLink>
 
-        <h1 className="text-4xl font-bold mb-16">Ability: {ability.name}</h1>
+        <h1 className="text-4xl font-bold">Ability: {ability.name}</h1>
 
         <div>
-          <h2 className="text-2xl font-bold mb-4">Effect</h2>
+          <h2 className="text-2xl font-bold mb-4">Effects</h2>
 
           <ul className="list-disc">
             {ability.effect_entries

@@ -23,7 +23,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 export async function clientLoader(_: Route.ClientLoaderArgs) {}
 
 export default function Pokemon({ params }: Route.ComponentProps) {
-  const { isPending, error, data } = useGetPokemon(params.name)
+  const { isPending, error, data: pokemon } = useGetPokemon(params.name)
 
   if (isPending) return <Centered>Loading...</Centered>
 
@@ -39,11 +39,11 @@ export default function Pokemon({ params }: Route.ComponentProps) {
       <div className="flex flex-col gap-4">
         <MyLink to="/pokemon">Back</MyLink>
 
-        <h1 className="text-4xl font-bold mb-16">{data.name}</h1>
+        <h1 className="text-4xl font-bold mb-16">{pokemon.name}</h1>
 
         <img
-          src={data.sprites.front_default}
-          alt={data.name}
+          src={pokemon.sprites.front_default}
+          alt={pokemon.name}
           width={96}
           height={96}
           className="w-48 h-48 mx-auto"
@@ -52,10 +52,22 @@ export default function Pokemon({ params }: Route.ComponentProps) {
         <p>Abilities</p>
 
         <ul>
-          {data.abilities.map((ability) => (
+          {pokemon.abilities.map((ability) => (
             <li key={ability.ability.name}>
-              <MyLink to={`/ability/${ability.ability.name}`} state={data.name}>
+              <MyLink to={`/ability/${ability.ability.name}`} state={pokemon.name}>
                 {ability.ability.name}
+              </MyLink>
+            </li>
+          ))}
+        </ul>
+
+        <p>Moves</p>
+
+        <ul>
+          {pokemon.moves.map((move) => (
+            <li key={move.move.name}>
+              <MyLink to={`/move/${move.move.name}`} state={pokemon.name}>
+                {move.move.name}
               </MyLink>
             </li>
           ))}

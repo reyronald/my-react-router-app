@@ -21,18 +21,26 @@ export type PokemonType = {
       url: string
     }
   }[]
+  moves: {
+    move: {
+      name: string
+      url: string
+    }
+  }[]
+}
+
+export type EffectEntry = {
+  effect: string
+  short_effect: string
+  language: {
+    name: string
+  }
 }
 
 export type Ability = {
   id: number
   name: string
-  effect_entries: Array<{
-    effect: string
-    short_effect: string
-    language: {
-      name: string
-    }
-  }>
+  effect_entries: EffectEntry[]
   pokemon: Array<{
     is_hidden: boolean
     slot: number
@@ -41,6 +49,14 @@ export type Ability = {
       url: string
     }
   }>
+}
+
+export type Move = {
+  name: string
+  accuracy: number
+  pp: number
+  power: number
+  effect_entries: EffectEntry[]
 }
 
 export const api = {
@@ -57,6 +73,11 @@ export const api = {
 
   async getAbility(idOrName: string): Promise<Ability> {
     const res = await fetch(`https://pokeapi.co/api/v2/ability/${idOrName}`)
+    return res.json()
+  },
+
+  async getMove(idOrName: string): Promise<Move> {
+    const res = await fetch(`https://pokeapi.co/api/v2/move/${idOrName}`)
     return res.json()
   },
 }

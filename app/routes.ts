@@ -8,4 +8,6 @@ export default [
   route("/pokemon/:name", "routes/Pokemon.tsx"),
 
   route("/ability/:name", "routes/Ability.tsx"),
+
+  route("/move/:name", "routes/Move.tsx"),
 ] satisfies RouteConfig
