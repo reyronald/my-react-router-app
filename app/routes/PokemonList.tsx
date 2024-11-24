@@ -24,18 +24,16 @@ export default function PokemonList({ loaderData }: Route.ComponentProps) {
   }, [])
 
   return (
-    <div className="flex h-screen justify-center my-12">
-      <div>
-        <h1 className="text-4xl font-bold mb-16">Pokemon List</h1>
+    <div>
+      <h1 className="text-4xl font-bold mb-16">Pokemon List</h1>
 
-        <ul>
-          {loaderData.results.map((pokemon) => (
-            <li key={pokemon.name}>
-              <MyLink to={`/pokemon/${pokemon.name}`}>{pokemon.name}</MyLink>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul>
+        {loaderData.results.map((pokemon) => (
+          <li key={pokemon.name}>
+            <MyLink to={`/pokemon/${pokemon.name}`}>{pokemon.name}</MyLink>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

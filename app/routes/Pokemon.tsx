@@ -35,44 +35,42 @@ export default function Pokemon({ params }: Route.ComponentProps) {
     )
 
   return (
-    <div className="flex justify-start my-12 mx-64">
-      <div className="flex flex-col gap-4">
-        <MyLink to="/pokemon">Back</MyLink>
+    <div className="flex flex-col gap-4">
+      <MyLink to="/pokemon">Back</MyLink>
 
-        <h1 className="text-4xl font-bold mb-16">{pokemon.name}</h1>
+      <h1 className="text-4xl font-bold mb-16">{pokemon.name}</h1>
 
-        <img
-          src={pokemon.sprites.front_default}
-          alt={pokemon.name}
-          width={96}
-          height={96}
-          className="w-48 h-48 mx-auto"
-        />
+      <img
+        src={pokemon.sprites.front_default}
+        alt={pokemon.name}
+        width={96}
+        height={96}
+        className="w-48 h-48 mx-auto"
+      />
 
-        <p>Abilities</p>
+      <p>Abilities</p>
 
-        <ul>
-          {pokemon.abilities.map((ability) => (
-            <li key={ability.ability.name}>
-              <MyLink to={`/ability/${ability.ability.name}`} state={pokemon.name}>
-                {ability.ability.name}
-              </MyLink>
-            </li>
-          ))}
-        </ul>
+      <ul>
+        {pokemon.abilities.map((ability) => (
+          <li key={ability.ability.name}>
+            <MyLink to={`/ability/${ability.ability.name}`} state={pokemon.name}>
+              {ability.ability.name}
+            </MyLink>
+          </li>
+        ))}
+      </ul>
 
-        <p>Moves</p>
+      <p>Moves</p>
 
-        <ul>
-          {pokemon.moves.map((move) => (
-            <li key={move.move.name}>
-              <MyLink to={`/move/${move.move.name}`} state={pokemon.name}>
-                {move.move.name}
-              </MyLink>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <ul>
+        {pokemon.moves.map((move) => (
+          <li key={move.move.name}>
+            <MyLink to={`/move/${move.move.name}`} state={pokemon.name}>
+              {move.move.name}
+            </MyLink>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }

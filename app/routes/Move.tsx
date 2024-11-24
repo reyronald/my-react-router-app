@@ -38,25 +38,23 @@ export function MoveImpl({ params }: Route.ComponentProps) {
   const { data: move } = useGetMoveSuspended(params.name)
 
   return (
-    <div className="flex justify-start my-12 mx-64">
-      <div className="flex flex-col gap-4">
-        <MyLink to={pokemonName ? `/pokemon/${pokemonName}` : "/pokemon"}>Back</MyLink>
+    <div className="flex flex-col gap-4">
+      <MyLink to={pokemonName ? `/pokemon/${pokemonName}` : "/pokemon"}>Back</MyLink>
 
-        <h1 className="text-4xl font-bold">Move: {move.name}</h1>
+      <h1 className="text-4xl font-bold">Move: {move.name}</h1>
 
-        <div>
-          <h2 className="text-2xl font-bold mb-4">Effects</h2>
+      <div>
+        <h2 className="text-2xl font-bold mb-4">Effects</h2>
 
-          <ul className="list-disc">
-            {move.effect_entries
-              .filter((entry) => entry.language.name === "en")
-              .map((entry) => (
-                <li key={entry.effect} className="text-lg">
-                  {entry.effect}
-                </li>
-              ))}
-          </ul>
-        </div>
+        <ul className="list-disc">
+          {move.effect_entries
+            .filter((entry) => entry.language.name === "en")
+            .map((entry) => (
+              <li key={entry.effect} className="text-lg">
+                {entry.effect}
+              </li>
+            ))}
+        </ul>
       </div>
     </div>
   )
