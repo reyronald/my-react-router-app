@@ -5,6 +5,10 @@ import { api } from "~/server/api"
 import { Route } from "./+types/PokemonList"
 import { prefetchPokemon } from "~/queries/pokemon"
 
+// In this component, we only have a server loader and no rehydration of React Query in the client.
+// This means that on every navigation to this page, regardless of whether it is a full page load
+// or a client-side navigation, the server will always fetch the data before the markup is sent to the client.
+
 export async function loader(_: Route.LoaderArgs) {
   const pokemonList = await api.getPokemonList()
   return pokemonList

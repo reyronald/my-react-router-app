@@ -4,6 +4,12 @@ import { Route } from "./+types/Pokemon"
 import { Centered } from "~/components/Centered/Centered"
 import { prefetchPokemon, usePokemon } from "~/queries/pokemon"
 
+// In this component, we have both a server loader and a client loader.
+// On a full page load, the server loader executes but not on client-side navigations.
+// On initial page load we're rehydrating the React Query cache with the data from the server
+// and we use that cache for client-side navigations from that point on, that's why
+// we're only relying on the server loader once per page load.
+
 export async function loader({ params }: Route.LoaderArgs) {
   const queryClient = new QueryClient()
 
