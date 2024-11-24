@@ -48,6 +48,18 @@ export default function Pokemon({ params }: Route.ComponentProps) {
           height={96}
           className="w-48 h-48 mx-auto"
         />
+
+        <p>Abilities</p>
+
+        <ul>
+          {data.abilities.map((ability) => (
+            <li key={ability.ability.name}>
+              <MyLink to={`/ability/${ability.ability.name}`} state={data.name}>
+                {ability.ability.name}
+              </MyLink>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )

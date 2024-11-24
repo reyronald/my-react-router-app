@@ -6,4 +6,6 @@ export default [
 
   route("/pokemon", "routes/PokemonList.tsx"),
   route("/pokemon/:name", "routes/Pokemon.tsx"),
+
+  route("/ability/:name", "routes/Ability.tsx"),
 ] satisfies RouteConfig
