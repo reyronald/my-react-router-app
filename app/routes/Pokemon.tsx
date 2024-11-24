@@ -1,40 +1,42 @@
-import { QueryClient, useQuery } from "@tanstack/react-query"
+import { dehydrate, QueryClient } from "@tanstack/react-query"
 import { MyLink } from "~/components/MyLink/MyLink"
-import { api } from "~/server/api"
+import { pokemonQuery } from "~/queries/pokemon"
 import { Route } from "./+types/Pokemon"
 
-export async function loader({ params }: Route.LoaderArgs) {
+export async function loader({ request, params }: Route.LoaderArgs) {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery({
-    queryKey: ["posts"],
-    queryFn: () => api.getPokemon(params.name),
-  })
+  // Only prefetch if the request is not from a navigation.
+  // Otherwise, we'll the browser do it from React Query
+  if (request.headers.get("referer") === null) {
+    await pokemonQuery.prefetchPokemon(queryClient, params.name)
+  }
 
-  const pokemon = await api.getPokemon(params.name)
-
-  return pokemon
+  return { dehydratedState: dehydrate(queryClient) }
 }
 
-export default function Pokemon({ params, loaderData }: Route.ComponentProps) {
-  const { data } = useQuery({
-    queryKey: ["pokemon"],
-    queryFn: () => api.getPokemon(params.name),
-    initialData: loaderData,
-  })
+export default function Pokemon({ params }: Route.ComponentProps) {
+  const { isPending, error, data } = pokemonQuery.usePokemon(params.name)
 
-  console.log("Pokemon", !!data)
+  if (isPending) return <div className="flex h-screen items-center justify-center">Loading...</div>
+
+  if (error)
+    return (
+      <div className="flex h-screen items-center justify-center text-red-500">
+        Error: {error.message}
+      </div>
+    )
 
   return (
     <div className="flex justify-start my-12 mx-64">
       <div className="flex flex-col gap-4">
         <MyLink to="/pokemon">Back</MyLink>
 
-        <h1 className="text-4xl font-bold mb-16">{loaderData.name}</h1>
+        <h1 className="text-4xl font-bold mb-16">{data.name}</h1>
 
         <img
-          src={loaderData.sprites.front_default}
-          alt={loaderData.name}
+          src={data.sprites.front_default}
+          alt={data.name}
           width={96}
           height={96}
           className="w-48 h-48 mx-auto"

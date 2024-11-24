@@ -1,8 +1,17 @@
 import type { LinksFunction } from "react-router"
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router"
+import { Links, Meta, Outlet, Scripts, ScrollRestoration, useMatches } from "react-router"
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import {
+  DehydratedState,
+  HydrationBoundary,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query"
+import merge from "deepmerge"
 import { useState } from "react"
+
+import { Route } from "./+types/root"
+
 import "./app.css"
 
 export const links: LinksFunction = () => [
@@ -51,9 +60,23 @@ export default function App() {
       }),
   )
 
+  const dehydratedState = useDehydratedState()
+
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <HydrationBoundary state={dehydratedState}>
+        <Outlet />
+      </HydrationBoundary>
     </QueryClientProvider>
   )
+}
+
+const useDehydratedState = (): DehydratedState => {
+  const matches = useMatches()
+
+  const dehydratedState = matches.map((match) => match.data?.dehydratedState).filter(Boolean)
+
+  return dehydratedState.length
+    ? dehydratedState.reduce((accumulator, currentValue) => merge(accumulator, currentValue), {})
+    : undefined
 }

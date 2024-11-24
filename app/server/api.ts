@@ -10,7 +10,7 @@ export type PokemonList = {
   results: Pokemon[]
 }
 
-type PokemonType = {
+export type PokemonType = {
   name: string
   sprites: {
     front_default: string
