@@ -1,3 +1,49 @@
+# My React Router v7 App!
+
+Architecture patterns to figure out:
+
+- [ ] Data Fetching
+  - [ ] Server loaders
+  - [ ] Client loaders
+  - [ ] Server loaders + Client loaders
+  - [ ] Link module preloading
+  - [ ] Resource preloading
+  - [ ] React Query
+  - [ ] React Query Prefetching
+  - [ ] Hydration
+  - [ ] Suspense
+  - [ ] Error boundaries
+- [ ] Storybook
+- [ ] Layout
+- [ ] Testing with Vitest
+  - [ ] MSW
+- [ ] Data mutations
+  - [ ] useFetcher
+  - [ ] Forms
+    - [ ] React Router <Form />
+    - [ ] React Hook Form
+    - [ ] Conform
+    - [ ] CSRF
+  - [ ] Optimistic updates
+  - [ ] Input validation with Zod
+- [ ] Auth
+- [ ] Logging
+- [ ] Middlewares
+- [ ] Auth
+- [ ] Database ORM
+- [ ] Linting
+- [ ] Formatting
+- [ ] CI
+  - [ ] Prevent PRs from being merged with formatting and lint errors. Don't use precommit hooks
+  - [ ] Don't run CI checks unless label is included
+  - [ ] Bundle size checker
+- [ ] Internationalization
+- [ ] SEO
+- [ ] Service Workers for caching files
+- [ ] Web Workers
+
+- Ronald Rey
+
 # Welcome to React Router!
 
 - 📖 [React Router docs](https://reactrouter.com/dev)
