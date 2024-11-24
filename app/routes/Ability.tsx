@@ -1,5 +1,6 @@
 import { Location, useLocation } from "react-router"
 import { Centered } from "~/components/Centered/Centered"
+import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryImpl"
 import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { useGetAbility } from "~/queries/ability"
 import { Route } from "./+types/Ability"
@@ -37,12 +38,7 @@ export default function Ability({ params }: Route.ComponentProps) {
 
   if (isPending) return <Centered>Loading...</Centered>
 
-  if (error)
-    return (
-      <Centered>
-        <span className="text-red-500">Error: {error.message}</span>
-      </Centered>
-    )
+  if (error) return <ErrorBoundaryImpl error={error} />
 
   return (
     <div className="flex flex-col gap-4">

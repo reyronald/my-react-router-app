@@ -1,8 +1,9 @@
 import { dehydrate, QueryClient } from "@tanstack/react-query"
-import { StyledLink } from "~/components/StyledLink/StyledLink"
-import { Route } from "./+types/Pokemon"
 import { Centered } from "~/components/Centered/Centered"
+import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryImpl"
+import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { prefetchPokemon, useGetPokemon } from "~/queries/pokemon"
+import { Route } from "./+types/Pokemon"
 
 // In this component, we have both a server loader and a client loader.
 // On a full page load, the server loader executes but not on client-side navigations.
@@ -27,12 +28,7 @@ export default function Pokemon({ params }: Route.ComponentProps) {
 
   if (isPending) return <Centered>Loading...</Centered>
 
-  if (error)
-    return (
-      <Centered>
-        <span className="text-red-500">Error: {error.message}</span>
-      </Centered>
-    )
+  if (error) return <ErrorBoundaryImpl error={error} />
 
   return (
     <div className="flex flex-col gap-4">
