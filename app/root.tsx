@@ -1,5 +1,13 @@
 import type { LinksFunction, MetaFunction, UIMatch } from "react-router"
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useMatches } from "react-router"
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useMatches,
+  useRouteError,
+} from "react-router"
 
 import {
   DehydratedState,
@@ -9,6 +17,8 @@ import {
 } from "@tanstack/react-query"
 import merge from "deepmerge"
 import { useState } from "react"
+
+import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryImpl"
 
 import "./app.css"
 
@@ -43,6 +53,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </body>
     </html>
   )
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError()
+  return <ErrorBoundaryImpl error={error} />
 }
 
 export default function App() {

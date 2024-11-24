@@ -2,19 +2,19 @@
 
 Architecture patterns to figure out:
 
-- [ ] Data Fetching
-  - [ ] Server loaders
-  - [ ] Client loaders
-  - [ ] Server loaders + Client loaders
-  - [ ] Link module preloading
-  - [ ] Resource preloading
-  - [ ] React Query
-  - [ ] React Query Prefetching
-  - [ ] Hydration
-  - [ ] Suspense
-  - [ ] Error boundaries
+- [x] Data Fetching
+  - [x] Server loaders
+  - [x] Client loaders
+  - [x] Server loaders + Client loaders
+  - [x] Link module preloading
+  - [x] Resource preloading
+  - [x] React Query
+  - [x] React Query Prefetching
+  - [x] Hydration
+  - [x] Suspense
+  - [x] Error boundaries
+- [x] Layout
 - [ ] Storybook
-- [ ] Layout
 - [ ] Testing with Vitest
   - [ ] MSW
 - [ ] Data mutations
@@ -29,7 +29,6 @@ Architecture patterns to figure out:
 - [ ] Auth
 - [ ] Logging
 - [ ] Middlewares
-- [ ] Auth
 - [ ] Database ORM
 - [ ] Linting
 - [ ] Formatting
