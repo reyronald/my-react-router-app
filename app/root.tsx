@@ -1,4 +1,4 @@
-import type { LinksFunction } from "react-router"
+import type { LinksFunction, MetaFunction } from "react-router"
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useMatches } from "react-router"
 
 import {
@@ -9,8 +9,6 @@ import {
 } from "@tanstack/react-query"
 import merge from "deepmerge"
 import { useState } from "react"
-
-import { Route } from "./+types/root"
 
 import "./app.css"
 
@@ -27,13 +25,14 @@ export const links: LinksFunction = () => [
   },
 ]
 
+export const meta: MetaFunction = () => [{ title: "My react router app" }]
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>My react router app</title>
         <Meta />
         <Links />
       </head>
