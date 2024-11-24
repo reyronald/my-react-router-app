@@ -1,9 +1,9 @@
 import { QueryClient, useQuery } from "@tanstack/react-query"
 import { api } from "~/server/api"
 
-export const usePokemon = (name: string) => {
+export const useGetPokemon = (name: string) => {
   const query = useQuery({
-    queryKey: usePokemon.queryKey(name),
+    queryKey: useGetPokemon.queryKey(name),
     queryFn: async () => {
       const data = await api.getPokemon(name)
       return data
@@ -13,11 +13,11 @@ export const usePokemon = (name: string) => {
   return query
 }
 
-usePokemon.queryKey = (name: string) => ["pokemon", name]
+useGetPokemon.queryKey = (name: string) => ["pokemon", name]
 
 export const prefetchPokemon = (queryClient: QueryClient, name: string) => {
   return queryClient.prefetchQuery({
-    queryKey: usePokemon.queryKey(name),
+    queryKey: useGetPokemon.queryKey(name),
     queryFn: () => api.getPokemon(name),
   })
 }

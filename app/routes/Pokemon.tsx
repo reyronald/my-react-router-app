@@ -2,7 +2,7 @@ import { dehydrate, QueryClient } from "@tanstack/react-query"
 import { MyLink } from "~/components/MyLink/MyLink"
 import { Route } from "./+types/Pokemon"
 import { Centered } from "~/components/Centered/Centered"
-import { prefetchPokemon, usePokemon } from "~/queries/pokemon"
+import { prefetchPokemon, useGetPokemon } from "~/queries/pokemon"
 
 // In this component, we have both a server loader and a client loader.
 // On a full page load, the server loader executes but not on client-side navigations.
@@ -23,7 +23,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 export async function clientLoader(_: Route.ClientLoaderArgs) {}
 
 export default function Pokemon({ params }: Route.ComponentProps) {
-  const { isPending, error, data } = usePokemon(params.name)
+  const { isPending, error, data } = useGetPokemon(params.name)
 
   if (isPending) return <Centered>Loading...</Centered>
 
