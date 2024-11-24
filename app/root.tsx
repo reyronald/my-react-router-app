@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from "react-router"
+import type { LinksFunction, MetaFunction, UIMatch } from "react-router"
 import { Links, Meta, Outlet, Scripts, ScrollRestoration, useMatches } from "react-router"
 
 import {
@@ -70,12 +70,17 @@ export default function App() {
   )
 }
 
-const useDehydratedState = (): DehydratedState => {
-  const matches = useMatches()
+const useDehydratedState = (): DehydratedState | undefined => {
+  const matches = useMatches() as UIMatch<{ dehydratedState?: DehydratedState }>[]
 
-  const dehydratedState = matches.map((match) => match.data?.dehydratedState).filter(Boolean)
+  const dehydratedState = matches
+    .map((match) => match.data?.dehydratedState)
+    .filter((d) => d != null)
 
   return dehydratedState.length
-    ? dehydratedState.reduce((accumulator, currentValue) => merge(accumulator, currentValue), {})
+    ? dehydratedState.reduce(
+        (accumulator, currentValue) => merge(accumulator, currentValue),
+        {} as DehydratedState,
+      )
     : undefined
 }
