@@ -3,17 +3,17 @@ import { MyLink } from "~/components/MyLink/MyLink"
 import { pokemonQuery } from "~/queries/pokemon"
 import { Route } from "./+types/Pokemon"
 
-export async function loader({ request, params }: Route.LoaderArgs) {
+export async function loader({ params }: Route.LoaderArgs) {
   const queryClient = new QueryClient()
 
-  // Only prefetch if the request is not from a navigation.
-  // Otherwise, we'll the browser do it from React Query
-  if (request.headers.get("referer") === null) {
-    await pokemonQuery.prefetchPokemon(queryClient, params.name)
-  }
+  await pokemonQuery.prefetchPokemon(queryClient, params.name)
 
   return { dehydratedState: dehydrate(queryClient) }
 }
+
+// Empty client loader so that we don't trigger the server loader on client-side navigation
+// and let React Query handle the data fetching in the browser
+export async function clientLoader(_: Route.ClientLoaderArgs) {}
 
 export default function Pokemon({ params }: Route.ComponentProps) {
   const { isPending, error, data } = pokemonQuery.usePokemon(params.name)
