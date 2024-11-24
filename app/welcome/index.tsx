@@ -1,3 +1,4 @@
+import { Link } from "react-router"
 import logoDark from "./logo-dark.svg"
 import logoLight from "./logo-light.svg"
 
@@ -17,19 +18,27 @@ export function Welcome() {
         <nav className="flex flex-col items-center justify-center gap-4 rounded-3xl border border-gray-200 p-6 dark:border-gray-700">
           <p className="leading-6 text-gray-700 dark:text-gray-200">What&apos;s next?</p>
           <ul>
-            {resources.map(({ href, text, icon }) => (
-              <li key={href}>
-                <a
-                  className="group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {icon}
-                  {text}
-                </a>
-              </li>
-            ))}
+            {resources.map(({ href, text, icon }) => {
+              const className =
+                "group flex items-center gap-3 self-stretch p-3 leading-normal text-blue-700 hover:underline dark:text-blue-500"
+              const external = href.includes("https://") || href.includes("http://")
+
+              return (
+                <li key={href}>
+                  {external ? (
+                    <a className={className} href={href} target="_blank" rel="noreferrer">
+                      {icon}
+                      {text}
+                    </a>
+                  ) : (
+                    <Link className={className} to={href}>
+                      {icon}
+                      {text}
+                    </Link>
+                  )}
+                </li>
+              )
+            })}
           </ul>
         </nav>
       </div>
@@ -40,6 +49,7 @@ export function Welcome() {
 const resources = [
   {
     href: "https://reactrouter.com/dev",
+    newTab: true,
     text: "React Router Docs",
     icon: (
       <svg
@@ -60,6 +70,7 @@ const resources = [
   },
   {
     href: "https://rmx.as/discord",
+    newTab: true,
     text: "Join Discord",
     icon: (
       <svg
@@ -75,6 +86,24 @@ const resources = [
           strokeWidth="1.5"
         />
       </svg>
+    ),
+  },
+  {
+    href: "/about",
+    text: "About",
+    icon: (
+      <span role="img" aria-label="icon">
+        🌟
+      </span>
+    ),
+  },
+  {
+    href: "/pokemon",
+    text: "List Pokemon",
+    icon: (
+      <span role="img" aria-label="icon">
+        📝
+      </span>
     ),
   },
 ]
