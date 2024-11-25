@@ -6,6 +6,17 @@ import { Route } from "./+types/Move"
 import { Suspense } from "react"
 import { Centered } from "~/components/Centered/Centered"
 
+// In this component we're using a Suspense query from React Query in the client.
+// This allows us to not have to manually handle loading states and error states
+// in the component that executes the query and get access to a data object that
+// will always exist.
+//
+// The loading states is handled by HydrateFallback on initial page load
+// and by the Suspense boundary on client-side navigations.
+//
+// The error state is handled by the ErrorBoundary in the root component
+// by we could export an ErrorBoundary in this file and that would be used instead.
+
 export async function loader({ params }: Route.LoaderArgs) {
   const queryClient = new QueryClient()
 
