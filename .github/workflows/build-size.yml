@@ -1,0 +1,33 @@
+name: Build Size Report
+
+on:
+  pull_request:
+    types: [labeled, synchronize]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-size:
+    name: Build Size Report
+    timeout-minutes: 15
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'build-size-report') }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+
+      - name: Generate build size report
+        uses: preactjs/compressed-size-action@v2
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          clean-script: "clean"
+          pattern: "**/build/client/**/*.{js,css,html}"
+          strip-hash: '(?:[a-zA-z0-9-.]+)-([a-zA-z0-9]+)\.(?:js|css)$'
