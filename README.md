@@ -2,21 +2,18 @@
 
 Architecture patterns to figure out:
 
-- [ ] Data Fetching
-  - [ ] Server loaders
-  - [ ] Client loaders
-  - [ ] Server loaders + Client loaders
-  - [ ] Link module preloading
-  - [ ] Resource preloading
-  - [ ] React Query
-  - [ ] React Query Prefetching
-  - [ ] Hydration
-  - [ ] Suspense
-  - [ ] Error boundaries
-- [ ] Storybook
-- [ ] Layout
-- [ ] Testing with Vitest
-  - [ ] MSW
+- [x] Layout
+- [x] Data Fetching
+  - [x] Server loaders
+  - [x] Client loaders
+  - [x] Server loaders + Client loaders
+  - [x] Link module preloading
+  - [x] Resource preloading
+  - [x] React Query
+  - [x] React Query Prefetching
+  - [x] Hydration
+  - [x] Suspense
+  - [x] Error boundaries
 - [ ] Data mutations
   - [ ] useFetcher
   - [ ] Forms
@@ -26,10 +23,19 @@ Architecture patterns to figure out:
     - [ ] CSRF
   - [ ] Optimistic updates
   - [ ] Input validation with Zod
+- [ ] Navigation
+  - [ ] Server navigation
+  - [ ] Client navigation
+  - [ ] View transitions
+- [ ] Storybook
+- [ ] Testing with Vitest
+  - [ ] MSW
+- [ ] Internationalization
+- [ ] SEO
 - [ ] Auth
 - [ ] Logging
+- [ ] Error reporting
 - [ ] Middlewares
-- [ ] Auth
 - [ ] Database ORM
 - [ ] Linting
 - [ ] Formatting
@@ -37,8 +43,6 @@ Architecture patterns to figure out:
   - [ ] Prevent PRs from being merged with formatting and lint errors. Don't use precommit hooks
   - [ ] Don't run CI checks unless label is included
   - [ ] Bundle size checker
-- [ ] Internationalization
-- [ ] SEO
 - [ ] Service Workers for caching files
 - [ ] Web Workers
 
