@@ -2,6 +2,7 @@
 
 Architecture patterns to figure out:
 
+- [x] Layout
 - [x] Data Fetching
   - [x] Server loaders
   - [x] Client loaders
@@ -13,10 +14,6 @@ Architecture patterns to figure out:
   - [x] Hydration
   - [x] Suspense
   - [x] Error boundaries
-- [x] Layout
-- [ ] Storybook
-- [ ] Testing with Vitest
-  - [ ] MSW
 - [ ] Data mutations
   - [ ] useFetcher
   - [ ] Forms
@@ -26,8 +23,18 @@ Architecture patterns to figure out:
     - [ ] CSRF
   - [ ] Optimistic updates
   - [ ] Input validation with Zod
+- [ ] Navigation
+  - [ ] Server navigation
+  - [ ] Client navigation
+  - [ ] View transitions
+- [ ] Storybook
+- [ ] Testing with Vitest
+  - [ ] MSW
+- [ ] Internationalization
+- [ ] SEO
 - [ ] Auth
 - [ ] Logging
+- [ ] Error reporting
 - [ ] Middlewares
 - [ ] Database ORM
 - [ ] Linting
@@ -36,8 +43,6 @@ Architecture patterns to figure out:
   - [ ] Prevent PRs from being merged with formatting and lint errors. Don't use precommit hooks
   - [ ] Don't run CI checks unless label is included
   - [ ] Bundle size checker
-- [ ] Internationalization
-- [ ] SEO
 - [ ] Service Workers for caching files
 - [ ] Web Workers
 

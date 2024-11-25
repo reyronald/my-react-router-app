@@ -6,7 +6,7 @@ import { prefetchPokemon, useGetPokemon } from "~/queries/pokemon"
 import { Route } from "./+types/Pokemon"
 
 // In this component, we have both a server loader and a client loader.
-// On a full page load, the server loader executes but not on client-side navigations.
+// On an initial page load, the server loader executes but not on client-side navigations.
 // On initial page load we're rehydrating the React Query cache with the data from the server
 // and we use that cache for client-side navigations from that point on, that's why
 // we're only relying on the server loader once per page load.
@@ -19,8 +19,8 @@ export async function loader({ params }: Route.LoaderArgs) {
   return { dehydratedState: dehydrate(queryClient) }
 }
 
-// Empty client loader so that we don't trigger the server loader on client-side navigation
-// and let React Query handle the data fetching in the browser
+// Empty client loader so that we don't trigger the server loader on client-side
+// navigation and let React Query handle the data fetching in the browser
 export async function clientLoader(_: Route.ClientLoaderArgs) {}
 
 export default function Pokemon({ params }: Route.ComponentProps) {

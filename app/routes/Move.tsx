@@ -11,8 +11,12 @@ import { Centered } from "~/components/Centered/Centered"
 // in the component that executes the query and get access to a data object that
 // will always exist.
 //
-// The loading states is handled by HydrateFallback on initial page load
-// and by the Suspense boundary on client-side navigations.
+// The loading state is handled by HydrateFallback on initial page load
+// and by the Suspense boundary on client-side navigations. In this combination
+// the React Query cache is not rehydrated from the server loader though, so
+// we always see both the HydrateFallback and Suspense fallback on initial page load,
+// not sure why but it doesn't bother me much at the moment because this is not the pattern
+// I'm interested in using.
 //
 // The error state is handled by the ErrorBoundary in the root component
 // by we could export an ErrorBoundary in this file and that would be used instead.
