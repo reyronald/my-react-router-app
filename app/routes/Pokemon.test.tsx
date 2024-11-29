@@ -2,6 +2,7 @@ import { screen } from "@testing-library/react"
 import { http, HttpResponse } from "msw"
 import { createRoutesStub } from "react-router"
 import { server } from "tests/mocks"
+import { getDummyPokemon } from "tests/mocks/pokemon"
 import { renderWithProviers } from "tests/setup/utils"
 import { describe, it } from "vitest"
 import { type Route } from "./+types/Pokemon"
@@ -11,37 +12,7 @@ describe("Pokemon", () => {
   it("renders loading and succesful state", async () => {
     server.use(
       http.get("/api/pokemon/bulbasaur", () => {
-        const data = {
-          name: "bulbasaur",
-          sprites: {
-            front_default:
-              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-          },
-          abilities: [
-            {
-              ability: {
-                name: "overgrow",
-                url: "",
-              },
-            },
-            {
-              ability: {
-                name: "chlorophyll",
-                url: "",
-              },
-            },
-          ],
-          moves: [
-            {
-              move: {
-                name: "razor-wind",
-                url: "",
-              },
-            },
-          ],
-        }
-
-        return HttpResponse.json(data)
+        return HttpResponse.json(getDummyPokemon())
       }),
     )
 

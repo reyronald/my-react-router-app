@@ -2,6 +2,7 @@ import { type Meta, type StoryObj } from "@storybook/react"
 import { DehydratedState } from "@tanstack/react-query"
 import { http, HttpResponse } from "msw"
 import { createRoutesStub } from "react-router"
+import { getDummyPokemon } from "tests/mocks/pokemon"
 import { Info } from "./+types/Pokemon"
 import Pokemon from "./Pokemon"
 
@@ -16,35 +17,7 @@ const meta = {
     msw: {
       handlers: [
         http.get("/api/pokemon/bulbasaur", () => {
-          return HttpResponse.json({
-            name: "bulbasaur",
-            sprites: {
-              front_default:
-                "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
-            },
-            abilities: [
-              {
-                ability: {
-                  name: "overgrow",
-                  url: "",
-                },
-              },
-              {
-                ability: {
-                  name: "chlorophyll",
-                  url: "",
-                },
-              },
-            ],
-            moves: [
-              {
-                move: {
-                  name: "razor-wind",
-                  url: "",
-                },
-              },
-            ],
-          })
+          return HttpResponse.json(getDummyPokemon())
         }),
       ],
     },
