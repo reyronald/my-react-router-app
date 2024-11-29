@@ -1,5 +1,6 @@
 import { type StoryObj, type Meta } from "@storybook/react"
 import { ErrorBoundaryImpl } from "./ErrorBoundaryImpl"
+import { createRoutesStub } from "react-router"
 
 const meta = {
   component: ErrorBoundaryImpl,
@@ -18,6 +19,17 @@ export const RouteErrorResponse = {
       data: "Something went wrong",
     },
   },
+  decorators: [
+    function reactRouterDecorator(Story, context) {
+      const Stub = createRoutesStub([
+        {
+          path: "/",
+          Component: Story,
+        },
+      ])
+      return <Stub />
+    },
+  ],
 } satisfies Story
 
 export const ErrorInstance = {

@@ -7,6 +7,17 @@ const meta = {
     to: "/",
     children: "Click me!",
   },
+  decorators: [
+    function reactRouterDecorator(Story, context) {
+      const Stub = createRoutesStub([
+        {
+          path: "/",
+          Component: Story,
+        },
+      ])
+      return <Stub />
+    },
+  ],
 } satisfies Meta<typeof StyledLink>
 
 export default meta

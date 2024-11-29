@@ -1,6 +1,11 @@
 import type { Preview } from "@storybook/react"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { initialize, mswLoader } from "msw-storybook-addon"
 import React from "react"
-import { createRoutesStub } from "react-router"
+
+initialize()
+
+const queryClient = new QueryClient()
 
 import "../app/app.css"
 
@@ -14,16 +19,13 @@ const preview: Preview = {
     },
   },
   tags: ["autodocs"],
+  loaders: [mswLoader],
   decorators: [
-    function reactRouterDecorator(Story, context) {
-      const Stub = createRoutesStub([
-        {
-          path: "/",
-          Component: Story,
-        },
-      ])
-      return <Stub />
-    },
+    (Story) => (
+      <QueryClientProvider client={queryClient}>
+        <Story />
+      </QueryClientProvider>
+    ),
   ],
 }
 
