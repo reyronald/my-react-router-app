@@ -1,4 +1,5 @@
 {
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#554ec7",
     "activityBar.background": "#554ec7",
