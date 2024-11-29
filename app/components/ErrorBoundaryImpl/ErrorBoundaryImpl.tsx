@@ -6,7 +6,7 @@ import { StyledLink } from "~/components/StyledLink/StyledLink"
 function Layout({ children }: { children: React.ReactNode }) {
   return (
     <Centered>
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-6 w-[800px]">
         {children}
 
         <StyledLink to="/">Go to the home page</StyledLink>

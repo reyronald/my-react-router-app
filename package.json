@@ -8,7 +8,9 @@
     "clean": "rm -rf build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@react-router/node": "^7.0.0",
@@ -21,11 +23,22 @@
     "react-router": "^7.0.1"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^3.2.2",
     "@react-router/dev": "^7.0.1",
+    "@storybook/addon-essentials": "^8.4.5",
+    "@storybook/addon-interactions": "^8.4.5",
+    "@storybook/addon-onboarding": "^8.4.5",
+    "@storybook/blocks": "^8.4.5",
+    "@storybook/react": "^8.4.5",
+    "@storybook/react-vite": "^8.4.5",
+    "@storybook/test": "^8.4.5",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
     "autoprefixer": "^10.4.20",
+    "msw": "^2.6.6",
+    "msw-storybook-addon": "^2.0.4",
     "postcss": "^8.4.47",
+    "storybook": "^8.4.5",
     "tailwindcss": "^3.4.13",
     "typescript": "^5.6.2",
     "vite": "^5.4.8",
@@ -36,5 +49,10 @@
   },
   "engines": {
     "node": ">=22.0.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }

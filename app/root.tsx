@@ -20,6 +20,7 @@ import { useState } from "react"
 
 import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryImpl"
 
+import "./tailwind-directives.css"
 import "./app.css"
 
 export const links: LinksFunction = () => [
