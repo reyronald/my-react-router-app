@@ -30,6 +30,8 @@ Architecture patterns to figure out:
 - [x] Storybook
 - [x] Testing with Vitest
   - [ ] MSW
+  - [ ] CI: Sharging
+  - [ ] CI: GH Actions reporter
 - [ ] Environment variables
 - [ ] Internationalization
 - [ ] SEO
