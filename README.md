@@ -29,7 +29,7 @@ Architecture patterns to figure out:
   - [ ] View transitions
 - [x] Storybook
 - [x] Testing with Vitest
-  - [ ] MSW
+  - [x] MSW
   - [ ] CI: Sharding
   - [ ] CI: GH Actions reporter
 - [ ] Environment variables
