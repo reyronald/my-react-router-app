@@ -1,7 +1,8 @@
-import { QueryClient } from "@tanstack/react-query"
+import { QueryClient, type QueryClientConfig } from "@tanstack/react-query"
+import deepmerge from "deepmerge"
 
-export function getQueryClient() {
-  const queryClient = new QueryClient({
+export function getQueryClient(overrideConfig?: QueryClientConfig) {
+  const defaultConfig: QueryClientConfig = {
     defaultOptions: {
       queries: {
         // With SSR, we usually want to set some default staleTime
@@ -9,6 +10,9 @@ export function getQueryClient() {
         staleTime: 60 * 1000,
       },
     },
-  })
+  }
+
+  const config = overrideConfig ? deepmerge(defaultConfig, overrideConfig) : defaultConfig
+  const queryClient = new QueryClient(config)
   return queryClient
 }

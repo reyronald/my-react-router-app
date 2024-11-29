@@ -6,8 +6,10 @@ export function renderWithProviers(
   ui: React.ReactNode,
   options?: Omit<RenderOptions, "queries"> | undefined,
 ) {
+  const queryClient = getQueryClient({ defaultOptions: { queries: { retry: 0 } } })
+
   const renderResult = render(
-    <QueryClientProvider client={getQueryClient()}>{ui}</QueryClientProvider>,
+    <QueryClientProvider client={queryClient}>{ui}</QueryClientProvider>,
     options,
   )
 

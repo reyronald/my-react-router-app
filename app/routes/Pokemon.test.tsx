@@ -74,4 +74,35 @@ describe("Pokemon", () => {
     await screen.findByText("Moves")
     await screen.findByText("razor-wind")
   })
+
+  it("renders error state", async () => {
+    server.use(
+      http.get("/api/pokemon/bulbasaur", () => {
+        return HttpResponse.error()
+      }),
+    )
+
+    const Stub = createRoutesStub([
+      {
+        id: "pokemon",
+        path: "/pokemon/:name",
+        Component() {
+          const props = {
+            params: {
+              name: "bulbasaur",
+            },
+          } as Route.ComponentProps
+          return <Pokemon {...props} />
+        },
+      },
+    ])
+
+    renderWithProviers(<Stub initialEntries={["/pokemon/bulbasaur"]} />)
+
+    await screen.findByText("Loading...")
+
+    await screen.findByRole("heading", { name: "Error" })
+    await screen.findByText("Failed to fetch")
+    await screen.findByRole("link", { name: "Go to the home page" })
+  })
 })
