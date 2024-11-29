@@ -27,7 +27,7 @@ Architecture patterns to figure out:
   - [ ] Server navigation
   - [ ] Client navigation
   - [ ] View transitions
-- [ ] Storybook
+- [x] Storybook
 - [ ] Testing with Vitest
   - [ ] MSW
 - [ ] Internationalization
