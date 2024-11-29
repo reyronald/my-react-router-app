@@ -1,13 +1,13 @@
 import type { Preview } from "@storybook/react"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { initialize, mswLoader } from "msw-storybook-addon"
+import { initialize as initializeMSW, mswLoader } from "msw-storybook-addon"
 import React from "react"
 
-initialize()
+import "../app/app.css"
+
+initializeMSW()
 
 const queryClient = new QueryClient()
-
-import "../app/app.css"
 
 const preview: Preview = {
   parameters: {

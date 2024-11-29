@@ -1,6 +1,6 @@
-import { type StoryObj, type Meta } from "@storybook/react"
-import { ErrorBoundaryImpl } from "./ErrorBoundaryImpl"
+import { type Meta, type StoryObj } from "@storybook/react"
 import { createRoutesStub } from "react-router"
+import { ErrorBoundaryImpl } from "./ErrorBoundaryImpl"
 
 const meta = {
   component: ErrorBoundaryImpl,
