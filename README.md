@@ -28,8 +28,11 @@ Architecture patterns to figure out:
   - [ ] Client navigation
   - [ ] View transitions
 - [x] Storybook
-- [ ] Testing with Vitest
-  - [ ] MSW
+- [x] Testing with Vitest
+  - [x] MSW
+  - [ ] CI: Sharding
+  - [ ] CI: GH Actions reporter
+- [ ] Environment variables
 - [ ] Internationalization
 - [ ] SEO
   - [ ] Remove trailing slashes https://authenticdigital.nz/blog/trailing-slashes-and-seo
