@@ -67,7 +67,7 @@ export const api = {
   },
 
   async getPokemon(name: string): Promise<PokemonType> {
-    const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`)
+    const res = await fetch(`/api/pokemon/${name}`)
     return res.json()
   },
 
