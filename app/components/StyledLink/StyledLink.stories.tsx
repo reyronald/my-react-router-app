@@ -1,4 +1,5 @@
-import { type StoryObj, type Meta } from "@storybook/react"
+import { type Meta, type StoryObj } from "@storybook/react"
+import { createRoutesStub } from "react-router"
 import { StyledLink } from "./StyledLink"
 
 const meta = {

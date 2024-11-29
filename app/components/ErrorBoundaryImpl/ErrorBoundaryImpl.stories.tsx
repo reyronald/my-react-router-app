@@ -4,6 +4,17 @@ import { ErrorBoundaryImpl } from "./ErrorBoundaryImpl"
 
 const meta = {
   component: ErrorBoundaryImpl,
+  decorators: [
+    function reactRouterDecorator(Story, context) {
+      const Stub = createRoutesStub([
+        {
+          path: "/",
+          Component: Story,
+        },
+      ])
+      return <Stub />
+    },
+  ],
 } satisfies Meta<typeof ErrorBoundaryImpl>
 
 export default meta
@@ -19,17 +30,6 @@ export const RouteErrorResponse = {
       data: "Something went wrong",
     },
   },
-  decorators: [
-    function reactRouterDecorator(Story, context) {
-      const Stub = createRoutesStub([
-        {
-          path: "/",
-          Component: Story,
-        },
-      ])
-      return <Stub />
-    },
-  ],
 } satisfies Story
 
 export const ErrorInstance = {

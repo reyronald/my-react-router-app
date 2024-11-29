@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 import { initialize as initializeMSW, mswLoader } from "msw-storybook-addon"
 import React from "react"
 
-import "../app/app.css"
+import "../app/tailwind-directives.css"
 
 initializeMSW()
 
