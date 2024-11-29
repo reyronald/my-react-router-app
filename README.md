@@ -28,8 +28,9 @@ Architecture patterns to figure out:
   - [ ] Client navigation
   - [ ] View transitions
 - [x] Storybook
-- [ ] Testing with Vitest
+- [x] Testing with Vitest
   - [ ] MSW
+- [ ] Environment variables
 - [ ] Internationalization
 - [ ] SEO
   - [ ] Remove trailing slashes https://authenticdigital.nz/blog/trailing-slashes-and-seo
