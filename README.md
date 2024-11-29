@@ -32,10 +32,16 @@ Architecture patterns to figure out:
   - [ ] MSW
 - [ ] Internationalization
 - [ ] SEO
+  - [ ] Remove trailing slashes https://authenticdigital.nz/blog/trailing-slashes-and-seo
+  - [ ] Robots.txt
+  - [ ] isbot
 - [ ] Auth
 - [ ] Logging
 - [ ] Error reporting
 - [ ] Middlewares
+- [ ] Rate Limiting
+- [ ] CORS
+- [ ] Content Security Policy
 - [ ] Database ORM
 - [ ] Linting
 - [ ] Formatting
