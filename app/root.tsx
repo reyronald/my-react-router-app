@@ -9,14 +9,10 @@ import {
   useRouteError,
 } from "react-router"
 
-import {
-  DehydratedState,
-  HydrationBoundary,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query"
+import { DehydratedState, HydrationBoundary, QueryClientProvider } from "@tanstack/react-query"
 import merge from "deepmerge"
 import { useState } from "react"
+import { getQueryClient } from "./utils/getQueryClient"
 
 import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryImpl"
 
@@ -62,18 +58,7 @@ export function ErrorBoundary() {
 }
 
 export default function App() {
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            // With SSR, we usually want to set some default staleTime
-            // above 0 to avoid refetching immediately on the client
-            staleTime: 60 * 1000,
-          },
-        },
-      }),
-  )
+  const [queryClient] = useState(() => getQueryClient())
 
   const dehydratedState = useDehydratedState()
 

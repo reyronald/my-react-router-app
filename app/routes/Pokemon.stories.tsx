@@ -67,14 +67,14 @@ export const RouteErrorResponse = {
     function reactRouterDecorator(Story, context) {
       const Stub = createRoutesStub([
         {
-          path: "/",
+          path: "/pokemon/:name",
           Component: Story,
           loader: (): Info["loaderData"] => {
             return { dehydratedState }
           },
         },
       ])
-      return <Stub />
+      return <Stub initialEntries={["/pokemon/bulbasaur"]} />
     },
   ],
   args: {
