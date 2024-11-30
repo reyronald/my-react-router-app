@@ -35,6 +35,7 @@ Architecture patterns to figure out:
   - [ ] CI: GH Actions reporter
 - [x] Linting
   - [x] Make sure warings fail on CI
+  - [ ] React compiler eslint-plugin-react-compiler
 - [x] Formatting
 - [x] CI
   - [x] Prevent PRs from being merged with formatting and lint errors. Don't use
