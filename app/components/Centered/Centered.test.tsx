@@ -6,6 +6,7 @@ import { Centered } from "./Centered"
 describe("Centered", () => {
   it("renders children", () => {
     render(<Centered>I am centered</Centered>)
+
     expect(screen.getByText("I am centered")).toBeInTheDocument()
   })
 })

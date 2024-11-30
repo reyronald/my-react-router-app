@@ -3,7 +3,8 @@ import { Centered } from "~/components/Centered/Centered"
 import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryImpl"
 import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { prefetchPokemon, useGetPokemon } from "~/queries/pokemon"
-import { Route } from "./+types/Pokemon"
+import type { Route } from "./+types/Pokemon"
+import { useEffect } from "react"
 
 // In this component, we have both a server loader and a client loader.
 // On an initial page load, the server loader executes but not on client-side navigations.
@@ -19,9 +20,10 @@ export async function loader({ params }: Route.LoaderArgs) {
   return { dehydratedState: dehydrate(queryClient) }
 }
 
-// Empty client loader so that we don't trigger the server loader on client-side
-// navigation and let React Query handle the data fetching in the browser
-export async function clientLoader(_: Route.ClientLoaderArgs) {}
+export function clientLoader(_: Route.ClientLoaderArgs) {
+  // Empty client loader so that we don't trigger the server loader on client-side
+  // navigation and let React Query handle the data fetching in the browser
+}
 
 export default function Pokemon({ params }: Route.ComponentProps) {
   const { isPending, error, data: pokemon } = useGetPokemon(params.name)

@@ -60,24 +60,26 @@ export type Move = {
 }
 
 export const api = {
+  /* eslint-disable @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-type-assertion */
   async getPokemonList(): Promise<PokemonList> {
     const search = new URLSearchParams([["limit", "10"]]).toString()
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon?${search}`)
-    return res.json()
+    return res.json() as Promise<PokemonList>
   },
 
   async getPokemon(name: string): Promise<PokemonType> {
     const res = await fetch(`/api/pokemon/${name}`)
-    return res.json()
+    return res.json() as Promise<PokemonType>
   },
 
   async getAbility(idOrName: string): Promise<Ability> {
     const res = await fetch(`https://pokeapi.co/api/v2/ability/${idOrName}`)
-    return res.json()
+    return res.json() as Promise<Ability>
   },
 
   async getMove(idOrName: string): Promise<Move> {
     const res = await fetch(`https://pokeapi.co/api/v2/move/${idOrName}`)
-    return res.json()
+    return res.json() as Promise<Move>
   },
+  /* eslint-enable @typescript-eslint/consistent-type-assertions,  @typescript-eslint/no-unsafe-type-assertion */
 }

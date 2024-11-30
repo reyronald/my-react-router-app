@@ -1,4 +1,5 @@
-import { QueryClient, useQuery, useSuspenseQuery } from "@tanstack/react-query"
+import type { QueryClient} from "@tanstack/react-query";
+import { useQuery, useSuspenseQuery } from "@tanstack/react-query"
 import { api } from "~/server/api"
 
 export const useGetMove = (name: string) => {

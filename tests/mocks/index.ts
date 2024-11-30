@@ -3,8 +3,8 @@ import { setupServer } from "msw/node"
 import { http, passthrough } from "msw"
 
 const handlers = [
-  http.get(/http:\/\/localhost:\d+\/.*/, async () => passthrough()),
-  http.post(/http:\/\/localhost:\d+\/.*/, async () => passthrough()),
+  http.get(/http:\/\/localhost:\d+\/.*/, () => passthrough()),
+  http.post(/http:\/\/localhost:\d+\/.*/, () => passthrough()),
 ]
 
 export const server = setupServer(...handlers)

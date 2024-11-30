@@ -9,7 +9,8 @@ import {
   useRouteError,
 } from "react-router"
 
-import { DehydratedState, HydrationBoundary, QueryClientProvider } from "@tanstack/react-query"
+import type { DehydratedState } from "@tanstack/react-query"
+import { HydrationBoundary, QueryClientProvider } from "@tanstack/react-query"
 import merge from "deepmerge"
 import { useState } from "react"
 import { getQueryClient } from "./utils/getQueryClient"
@@ -72,16 +73,20 @@ export default function App() {
 }
 
 const useDehydratedState = (): DehydratedState | undefined => {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-type-assertion
   const matches = useMatches() as UIMatch<{ dehydratedState?: DehydratedState }>[]
 
   const dehydratedState = matches
-    .map((match) => match.data?.dehydratedState)
+    .map((match) => match.data.dehydratedState)
     .filter((d) => d != null)
 
   return dehydratedState.length
-    ? dehydratedState.reduce(
+    ? dehydratedState.reduce<DehydratedState>(
         (accumulator, currentValue) => merge(accumulator, currentValue),
-        {} as DehydratedState,
+        {
+          queries: [],
+          mutations: [],
+        },
       )
     : undefined
 }

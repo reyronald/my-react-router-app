@@ -1,4 +1,5 @@
-import { QueryClient, useQuery } from "@tanstack/react-query"
+import type { QueryClient} from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query"
 import { api } from "~/server/api"
 
 export const useGetPokemon = (name: string) => {

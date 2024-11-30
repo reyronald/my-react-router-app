@@ -1,9 +1,10 @@
-import { Location, useLocation } from "react-router"
+import type { Location } from "react-router"
+import { useLocation } from "react-router"
 import { Centered } from "~/components/Centered/Centered"
 import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryImpl"
 import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { useGetAbility } from "~/queries/ability"
-import { Route } from "./+types/Ability"
+import type { Route } from "./+types/Ability"
 
 // If you are fetching on render with React Query, you can use the meta function
 // to preload the data a bit earlier with a <link rel="preload"> tag.
@@ -32,6 +33,7 @@ export const meta: Route.MetaFunction = ({ params }) => {
 }
 
 export default function Ability({ params }: Route.ComponentProps) {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-type-assertion
   const { state: pokemonName } = useLocation() as Location<string | null>
 
   const { isPending, error, data: ability } = useGetAbility(params.name)
