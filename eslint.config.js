@@ -5,6 +5,7 @@ import pluginJs from "@eslint/js"
 import vitest from "@vitest/eslint-plugin"
 import prettier from "eslint-config-prettier"
 import eslintComments from "eslint-plugin-eslint-comments"
+import eslintPluginImportX from "eslint-plugin-import-x"
 import jsxA11y from "eslint-plugin-jsx-a11y"
 import reactPlugin from "eslint-plugin-react"
 import reactHooks from "eslint-plugin-react-hooks"
@@ -53,6 +54,10 @@ const config = [
     },
     rules: eslintComments.configs.recommended.rules,
   },
+
+  eslintPluginImportX.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.typescript,
+  eslintPluginImportX.flatConfigs.react,
 
   // Overrides
   {
