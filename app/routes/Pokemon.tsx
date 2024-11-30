@@ -4,7 +4,6 @@ import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryI
 import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { prefetchPokemon, useGetPokemon } from "~/queries/pokemon"
 import type { Route } from "./+types/Pokemon"
-import { useEffect } from "react"
 
 // In this component, we have both a server loader and a client loader.
 // On an initial page load, the server loader executes but not on client-side navigations.
