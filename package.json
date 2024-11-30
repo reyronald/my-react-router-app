@@ -13,6 +13,7 @@
     "coverage": "vitest run --coverage",
     "prettier:check": "prettier . -c",
     "lint": "eslint .",
+    "lint:ci": "eslint . --max-warnings=0",
     "lint:file": "eslint",
     "lint:changed": "git diff --name-only --diff-filter=d --cached | grep -E \"(.*)\\.(jsx|js|ts|tsx)$\" | xargs npm run lint:file -- --color",
     "lint:branch": "git diff --name-only --diff-filter=d --cached main | grep -E \"(.*)\\.(jsx|js|ts|tsx)$\" | xargs npm run lint:file -- --color",

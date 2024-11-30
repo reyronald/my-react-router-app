@@ -34,7 +34,7 @@ Architecture patterns to figure out:
   - [ ] CI: Sharding
   - [ ] CI: GH Actions reporter
 - [x] Linting
-  - [ ] Make sure warings fail on CI
+  - [x] Make sure warings fail on CI
 - [x] Formatting
 - [x] CI
   - [x] Prevent PRs from being merged with formatting and lint errors. Don't use
