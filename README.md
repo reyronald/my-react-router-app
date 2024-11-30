@@ -51,9 +51,11 @@ Architecture patterns to figure out:
   - [ ] Make sure warings fail on CI
 - [ ] Formatting
 - [ ] CI
-  - [ ] Prevent PRs from being merged with formatting and lint errors. Don't use precommit hooks
-  - [ ] Don't run CI checks unless label is included
-  - [ ] Bundle size checker
+  - [x] Prevent PRs from being merged with formatting and lint errors. Don't use
+        precommit hooks
+  - [x] Don't run CI checks unless label is included
+  - [x] Bundle size checker
+  - [ ] Dangerjs
 - [ ] Service Workers for caching files
 - [ ] Web Workers
 
