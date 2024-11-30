@@ -1,4 +1,3 @@
-// ./src/@types/eslint-plugin-react-hooks.d.ts
 declare module "eslint-plugin-react-hooks" {
   import type { ESLint } from "eslint"
 
