@@ -33,6 +33,15 @@ Architecture patterns to figure out:
   - [x] MSW
   - [ ] CI: Sharding
   - [ ] CI: GH Actions reporter
+- [x] Linting
+  - [ ] Make sure warings fail on CI
+- [x] Formatting
+- [x] CI
+  - [x] Prevent PRs from being merged with formatting and lint errors. Don't use
+        precommit hooks
+  - [x] Don't run CI checks unless label is included
+  - [x] Bundle size checker
+  - [x] Dangerjs
 - [ ] Environment variables
 - [ ] Internationalization
 - [ ] SEO
@@ -47,15 +56,6 @@ Architecture patterns to figure out:
 - [ ] CORS
 - [ ] Content Security Policy
 - [ ] Database ORM
-- [x] Linting
-  - [ ] Make sure warings fail on CI
-- [ ] Formatting
-- [ ] CI
-  - [x] Prevent PRs from being merged with formatting and lint errors. Don't use
-        precommit hooks
-  - [x] Don't run CI checks unless label is included
-  - [x] Bundle size checker
-  - [ ] Dangerjs
 - [ ] Service Workers for caching files
 - [ ] Web Workers
 
