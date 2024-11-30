@@ -74,10 +74,10 @@ export default function App() {
 
 const useDehydratedState = (): DehydratedState | undefined => {
   // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-type-assertion
-  const matches = useMatches() as UIMatch<{ dehydratedState?: DehydratedState }>[]
+  const matches = useMatches() as UIMatch<{ dehydratedState?: DehydratedState } | null>[]
 
   const dehydratedState = matches
-    .map((match) => match.data.dehydratedState)
+    .map((match) => match.data?.dehydratedState)
     .filter((d) => d != null)
 
   return dehydratedState.length

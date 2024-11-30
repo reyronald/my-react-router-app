@@ -21,7 +21,6 @@ export default function PokemonList({ loaderData }: Route.ComponentProps) {
   const query = useQueryClient()
 
   useEffect(() => {
-    console.log("running effect")
     for (const pokemon of loaderData.results) {
       void prefetchPokemon(query, pokemon.name)
     }
