@@ -10,7 +10,8 @@
     ".storybook/**/*.ts",
     ".storybook/**/*.tsx",
     "eslint.config.js",
-    "postcss.config.js"
+    "postcss.config.js",
+    "dangerfile.ts"
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],

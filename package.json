@@ -18,7 +18,8 @@
     "lint:branch": "git diff --name-only --diff-filter=d --cached main | grep -E \"(.*)\\.(jsx|js|ts|tsx)$\" | xargs npm run lint:file -- --color",
     "typecheck": "react-router typegen && tsc",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "danger": "danger"
   },
   "dependencies": {
     "@react-router/node": "^7.0.0",
@@ -55,6 +56,7 @@
     "@vitest/ui": "^2.1.6",
     "autoprefixer": "^10.4.20",
     "close-with-grace": "^2.1.0",
+    "danger": "^12.3.3",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.3",
