@@ -8,6 +8,8 @@ import tseslint from "typescript-eslint"
 import prettier from "eslint-config-prettier"
 import vitest from "@vitest/eslint-plugin"
 import testingLibrary from "eslint-plugin-testing-library"
+import jsxA11y from "eslint-plugin-jsx-a11y"
+import reactHooks from "eslint-plugin-react-hooks"
 
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile} */
 const config = [
@@ -30,9 +32,17 @@ const config = [
   ...tseslint.configs.stylisticTypeChecked,
 
   react.configs.recommended,
+  {
+    plugins: {
+      "react-hooks": reactHooks,
+    },
+    rules: reactHooks.configs.recommended.rules,
+  },
 
   ...(reactPlugin.configs.flat?.recommended ? [reactPlugin.configs.flat.recommended] : []),
   ...(reactPlugin.configs.flat?.["jsx-runtime"] ? [reactPlugin.configs.flat["jsx-runtime"]] : []),
+
+  jsxA11y.flatConfigs.strict,
 
   prettier,
 
