@@ -1,3 +1,4 @@
 .react-router
 coverage
 package-lock.json
+public/mockServiceWorker.js
