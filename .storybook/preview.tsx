@@ -5,7 +5,7 @@ import { initialize as initializeMSW, mswLoader } from "msw-storybook-addon"
 import "../app/tailwind-directives.css"
 
 initializeMSW(
-  location.pathname.includes("github.io")
+  location.hostname.includes("github.io")
     ? {
         serviceWorker: {
           url: `my-react-router-app/mockServiceWorker.js`,
