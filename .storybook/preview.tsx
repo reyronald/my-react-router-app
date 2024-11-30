@@ -8,7 +8,7 @@ initializeMSW(
   location.hostname.includes("github.io")
     ? {
         serviceWorker: {
-          url: `my-react-router-app/mockServiceWorker.js`,
+          url: `mockServiceWorker.js`,
         },
       }
     : undefined,
