@@ -18,7 +18,7 @@
     "lint:branch": "git diff --name-only --diff-filter=d --cached main | grep -E \"(.*)\\.(jsx|js|ts|tsx)$\" | xargs npm run lint:file -- --color",
     "typecheck": "react-router typegen && tsc",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook:build": "storybook build"
   },
   "dependencies": {
     "@react-router/node": "^7.0.0",
