@@ -49,7 +49,6 @@ Architecture patterns to figure out:
 - [ ] Database ORM
 - [x] Linting
   - [ ] Make sure warings fail on CI
-  - [ ] eslint-plugin-import
 - [ ] Formatting
 - [ ] CI
   - [ ] Prevent PRs from being merged with formatting and lint errors. Don't use precommit hooks
