@@ -28,7 +28,7 @@ Architecture patterns to figure out:
   - [ ] Client navigation
   - [ ] View transitions
 - [x] Storybook
-  - [ ] GH Pages
+  - [x] Build and deploy to Github Pages
 - [x] Testing with Vitest
   - [x] MSW
   - [ ] CI: Sharding
