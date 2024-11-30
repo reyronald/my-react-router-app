@@ -46,7 +46,8 @@ Architecture patterns to figure out:
 - [ ] CORS
 - [ ] Content Security Policy
 - [ ] Database ORM
-- [ ] Linting
+- [x] Linting
+  - [ ] Make sure warings fail on CI
 - [ ] Formatting
 - [ ] CI
   - [ ] Prevent PRs from being merged with formatting and lint errors. Don't use precommit hooks
