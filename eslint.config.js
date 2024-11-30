@@ -5,6 +5,8 @@ import pluginJs from "@eslint/js"
 import reactPlugin from "eslint-plugin-react"
 import globals from "globals"
 import tseslint from "typescript-eslint"
+import prettier from "eslint-config-prettier"
+import vitest from "@vitest/eslint-plugin"
 
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile} */
 const config = [
@@ -19,6 +21,7 @@ const config = [
       },
     },
   },
+  { settings: { react: { version: "detect" } } },
 
   pluginJs.configs.recommended,
 
@@ -30,7 +33,7 @@ const config = [
   ...(reactPlugin.configs.flat?.recommended ? [reactPlugin.configs.flat.recommended] : []),
   ...(reactPlugin.configs.flat?.["jsx-runtime"] ? [reactPlugin.configs.flat["jsx-runtime"]] : []),
 
-  { settings: { react: { version: "detect" } } },
+  prettier,
 
   // Overrides
   {
@@ -40,8 +43,30 @@ const config = [
         { args: "none", varsIgnorePattern: "^_", ignoreRestSiblings: true },
       ],
       "@typescript-eslint/no-confusing-void-expression": "off",
+      "@typescript-eslint/no-unsafe-type-assertion": "error",
       "@typescript-eslint/consistent-type-definitions": "off",
+      "@typescript-eslint/consistent-type-imports": "error",
+      "@typescript-eslint/consistent-type-assertions": ["error", { assertionStyle: "never" }],
       "@typescript-eslint/array-type": "off",
+      "@typescript-eslint/switch-exhaustiveness-check": "error",
+    },
+  },
+
+  {
+    files: ["**/*/*.test.*"],
+    plugins: {
+      vitest,
+    },
+    rules: {
+      ...vitest.configs.all.rules,
+      "vitest/prefer-expect-assertions": "off",
+      "vitest/prefer-lowercase-title": "off",
+
+      "@typescript-eslint/consistent-type-assertions": "off",
+      "@typescript-eslint/no-unsafe-type-assertion": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-explicit-any": "off",
     },
   },
 ]
