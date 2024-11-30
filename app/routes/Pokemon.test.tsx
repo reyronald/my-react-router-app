@@ -5,7 +5,7 @@ import { server } from "tests/mocks"
 import { getDummyPokemon } from "tests/mocks/pokemon"
 import { renderWithProviers } from "tests/setup/utils"
 import { describe, it } from "vitest"
-import { type Route } from "./+types/Pokemon"
+import type { Route } from "./+types/Pokemon"
 import Pokemon from "./Pokemon"
 
 describe("Pokemon", () => {
