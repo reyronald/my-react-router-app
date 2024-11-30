@@ -1,9 +1,20 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-empty-object-type */
+
 import { expect } from "vitest"
 
 import "@testing-library/jest-dom/vitest"
 
 expect.extend({})
 
-interface CustomMatchers<R = unknown> {}
+interface CustomMatchers<R = unknown> {
+  toBeFoo: () => R
+}
 
-declare module "vitest" {}
+declare module "vitest" {
+  interface Assertion<T = any> extends CustomMatchers<T> {}
+  interface AsymmetricMatchersContaining extends CustomMatchers {}
+}
+
+/* eslint-enable @typescript-eslint/no-explicit-any */
+/* eslint-enable @typescript-eslint/no-empty-object-type */

@@ -1,9 +1,9 @@
 import { type Meta, type StoryObj } from "@storybook/react"
-import { DehydratedState } from "@tanstack/react-query"
+import type { DehydratedState } from "@tanstack/react-query"
 import { http, HttpResponse } from "msw"
 import { createRoutesStub } from "react-router"
 import { getDummyPokemon } from "tests/mocks/pokemon"
-import { Info } from "./+types/Pokemon"
+import type { Info } from "./+types/Pokemon"
 import Pokemon from "./Pokemon"
 
 const dehydratedState = {

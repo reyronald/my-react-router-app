@@ -2,7 +2,7 @@ import { useQueryClient } from "@tanstack/react-query"
 import { useEffect } from "react"
 import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { api } from "~/server/api"
-import { Route } from "./+types/PokemonList"
+import type { Route } from "./+types/PokemonList"
 import { prefetchPokemon } from "~/queries/pokemon"
 
 // In this component, we only have a server loader and no rehydration of React Query in the client.
@@ -22,9 +22,9 @@ export default function PokemonList({ loaderData }: Route.ComponentProps) {
 
   useEffect(() => {
     for (const pokemon of loaderData.results) {
-      prefetchPokemon(query, pokemon.name)
+      void prefetchPokemon(query, pokemon.name)
     }
-  }, [])
+  }, [query, loaderData.results])
 
   return (
     <div>
