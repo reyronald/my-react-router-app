@@ -4,7 +4,15 @@ import { initialize as initializeMSW, mswLoader } from "msw-storybook-addon"
 
 import "../app/tailwind-directives.css"
 
-initializeMSW()
+initializeMSW(
+  location.pathname.includes("github.io")
+    ? {
+        serviceWorker: {
+          url: `${location.pathname}/mockServiceWorker.js`,
+        },
+      }
+    : undefined,
+)
 
 const queryClient = new QueryClient()
 
