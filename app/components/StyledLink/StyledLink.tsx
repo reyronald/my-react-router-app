@@ -1,4 +1,4 @@
-import type { LinkProps } from "react-router";
+import type { LinkProps } from "react-router"
 import { Link } from "react-router"
 
 export function StyledLink({ className, ...rest }: LinkProps) {
