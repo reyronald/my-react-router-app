@@ -2,14 +2,15 @@
 
 import react from "@eslint-react/eslint-plugin"
 import pluginJs from "@eslint/js"
+import vitest from "@vitest/eslint-plugin"
+import prettier from "eslint-config-prettier"
+import eslintComments from "eslint-plugin-eslint-comments"
+import jsxA11y from "eslint-plugin-jsx-a11y"
 import reactPlugin from "eslint-plugin-react"
+import reactHooks from "eslint-plugin-react-hooks"
+import testingLibrary from "eslint-plugin-testing-library"
 import globals from "globals"
 import tseslint from "typescript-eslint"
-import prettier from "eslint-config-prettier"
-import vitest from "@vitest/eslint-plugin"
-import testingLibrary from "eslint-plugin-testing-library"
-import jsxA11y from "eslint-plugin-jsx-a11y"
-import reactHooks from "eslint-plugin-react-hooks"
 
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile} */
 const config = [
@@ -45,6 +46,13 @@ const config = [
   jsxA11y.flatConfigs.strict,
 
   prettier,
+
+  {
+    plugins: {
+      "eslint-comments": eslintComments,
+    },
+    rules: eslintComments.configs.recommended.rules,
+  },
 
   // Overrides
   {
