@@ -7,6 +7,7 @@ import globals from "globals"
 import tseslint from "typescript-eslint"
 import prettier from "eslint-config-prettier"
 import vitest from "@vitest/eslint-plugin"
+import testingLibrary from "eslint-plugin-testing-library"
 
 /** @type {import('@typescript-eslint/utils').TSESLint.FlatConfig.ConfigFile} */
 const config = [
@@ -68,6 +69,12 @@ const config = [
       "@typescript-eslint/no-non-null-assertion": "off",
       "@typescript-eslint/no-explicit-any": "off",
     },
+  },
+
+  {
+    files: ["**/*/*.test.*"],
+    ...testingLibrary.configs["flat/react"],
+    ...testingLibrary.configs["flat/dom"],
   },
 ]
 

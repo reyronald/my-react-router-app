@@ -8,3 +8,4 @@ node_modules
 *storybook.log
 
 coverage
+tsconfig.tsbuildinfo
