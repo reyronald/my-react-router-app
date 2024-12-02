@@ -41,7 +41,6 @@ export const meta: MetaFunction = () => [{ title: "My react router app" }]
 
 export function loader() {
   const env = getClientEnv()
-
   return { env }
 }
 
