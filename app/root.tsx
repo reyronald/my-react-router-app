@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
   useMatches,
   useRouteError,
+  useRouteLoaderData,
 } from "react-router"
 
 import type { DehydratedState } from "@tanstack/react-query"
@@ -16,8 +17,11 @@ import { useState } from "react"
 import { getQueryClient } from "./utils/getQueryClient"
 
 import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryImpl"
+import { getClientEnv } from "./utils/config"
 
-import "./tailwind-directives.css"
+import type { Info } from "./+types/root"
+
+import "./_tailwind-directives.css"
 import "./app.css"
 
 export const links: LinksFunction = () => [
@@ -35,7 +39,15 @@ export const links: LinksFunction = () => [
 
 export const meta: MetaFunction = () => [{ title: "My react router app" }]
 
+export function loader() {
+  const env = getClientEnv()
+
+  return { env }
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const data = useRouteLoaderData<Info["loaderData"]>("root")
+
   return (
     <html lang="en">
       <head>
@@ -46,6 +58,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         {children}
+        {data && (
+          // eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `window.ENV = ${JSON.stringify(data.env)}`,
+            }}
+          />
+        )}
         <ScrollRestoration />
         <Scripts />
       </body>
