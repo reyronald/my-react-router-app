@@ -27,3 +27,13 @@ declare module "eslint-plugin-eslint-comments" {
 
   export default plugin
 }
+
+declare module "eslint-plugin-react-compiler" {
+  import type { Rule } from "eslint"
+
+  const plugin: {
+    rules: Record<string, Rule.RuleModule>
+  }
+
+  export default plugin
+}
