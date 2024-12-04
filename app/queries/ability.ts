@@ -3,7 +3,7 @@ import { api } from "~/server/api"
 
 export const useGetAbility = (name: string) => {
   const query = useQuery({
-    queryKey: GetAbilityQueryKey(name),
+    queryKey: getAbilityQueryKey(name),
     queryFn: async () => {
       const data = await api.getAbility(name)
       return data
@@ -13,4 +13,4 @@ export const useGetAbility = (name: string) => {
   return query
 }
 
-const GetAbilityQueryKey = (name: string) => ["ability", name]
+const getAbilityQueryKey = (name: string) => ["ability", name]
