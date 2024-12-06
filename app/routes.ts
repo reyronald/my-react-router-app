@@ -12,4 +12,7 @@ export default [
 
     route("/move/:name", "routes/Move.tsx"),
   ]),
+
+  // resource routes
+  route("/api/pokemon/:name", "resource-routes/pokemon.ts"),
 ] satisfies RouteConfig

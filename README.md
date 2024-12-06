@@ -27,22 +27,36 @@ Architecture patterns to figure out:
   - [ ] Server navigation
   - [ ] Client navigation
   - [ ] View transitions
-- [ ] Storybook
-- [ ] Testing with Vitest
-  - [ ] MSW
+- [x] Storybook
+  - [x] Build and deploy to Github Pages
+- [x] Testing with Vitest
+  - [x] MSW
+  - [ ] CI: Sharding
+  - [ ] CI: GH Actions reporter
+- [x] Linting
+  - [x] Make sure warings fail on CI
+  - [ ] React compiler eslint-plugin-react-compiler
+- [x] Formatting
+- [x] CI
+  - [x] Prevent PRs from being merged with formatting and lint errors. Don't use
+        precommit hooks
+  - [x] Don't run CI checks unless label is included
+  - [x] Bundle size checker
+  - [x] Dangerjs
+- [ ] Environment variables
 - [ ] Internationalization
 - [ ] SEO
+  - [ ] Remove trailing slashes https://authenticdigital.nz/blog/trailing-slashes-and-seo
+  - [ ] Robots.txt
+  - [ ] isbot
 - [ ] Auth
 - [ ] Logging
 - [ ] Error reporting
 - [ ] Middlewares
+- [ ] Rate Limiting
+- [ ] CORS
+- [ ] Content Security Policy
 - [ ] Database ORM
-- [ ] Linting
-- [ ] Formatting
-- [ ] CI
-  - [ ] Prevent PRs from being merged with formatting and lint errors. Don't use precommit hooks
-  - [ ] Don't run CI checks unless label is included
-  - [ ] Bundle size checker
 - [ ] Service Workers for caching files
 - [ ] Web Workers
 

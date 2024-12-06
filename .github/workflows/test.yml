@@ -1,0 +1,30 @@
+name: Run Tests
+
+on:
+  # Run CI when:
+  # - a PR is opened, labeled or a commit is pushed (synchronize)
+  pull_request:
+    types: [labeled, opened, reopened, synchronize]
+  # Run CI when commits are pushed to the main branch
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    if: ${{ contains(github.event.pull_request.labels.*.name, 'Run CI') || github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+          cache: "npm"
+      - run: npm install -g npm
+      - run: npm ci
+      - run: npm run prettier:check
+      - run: npm run typecheck
+      - run: npm run lint:ci
+      - run: npm test

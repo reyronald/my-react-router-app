@@ -1,4 +1,8 @@
 {
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#554ec7",
     "activityBar.background": "#554ec7",

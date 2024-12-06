@@ -9,17 +9,15 @@ import {
   useRouteError,
 } from "react-router"
 
-import {
-  DehydratedState,
-  HydrationBoundary,
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query"
+import type { DehydratedState } from "@tanstack/react-query"
+import { HydrationBoundary, QueryClientProvider } from "@tanstack/react-query"
 import merge from "deepmerge"
 import { useState } from "react"
+import { getQueryClient } from "./utils/getQueryClient"
 
 import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryImpl"
 
+import "./tailwind-directives.css"
 import "./app.css"
 
 export const links: LinksFunction = () => [
@@ -61,18 +59,7 @@ export function ErrorBoundary() {
 }
 
 export default function App() {
-  const [queryClient] = useState(
-    () =>
-      new QueryClient({
-        defaultOptions: {
-          queries: {
-            // With SSR, we usually want to set some default staleTime
-            // above 0 to avoid refetching immediately on the client
-            staleTime: 60 * 1000,
-          },
-        },
-      }),
-  )
+  const [queryClient] = useState(() => getQueryClient())
 
   const dehydratedState = useDehydratedState()
 
@@ -86,16 +73,20 @@ export default function App() {
 }
 
 const useDehydratedState = (): DehydratedState | undefined => {
-  const matches = useMatches() as UIMatch<{ dehydratedState?: DehydratedState }>[]
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-type-assertion
+  const matches = useMatches() as UIMatch<{ dehydratedState?: DehydratedState } | null>[]
 
   const dehydratedState = matches
     .map((match) => match.data?.dehydratedState)
     .filter((d) => d != null)
 
   return dehydratedState.length
-    ? dehydratedState.reduce(
+    ? dehydratedState.reduce<DehydratedState>(
         (accumulator, currentValue) => merge(accumulator, currentValue),
-        {} as DehydratedState,
+        {
+          queries: [],
+          mutations: [],
+        },
       )
     : undefined
 }

@@ -4,3 +4,10 @@ node_modules
 /build
 .env
 .react-router
+
+*storybook.log
+
+coverage
+tsconfig.tsbuildinfo
+
+storybook-static

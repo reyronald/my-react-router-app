@@ -1,8 +1,9 @@
 import { dehydrate, QueryClient } from "@tanstack/react-query"
-import { useLocation, Location } from "react-router"
+import type { Location } from "react-router"
+import { useLocation } from "react-router"
 import { StyledLink } from "~/components/StyledLink/StyledLink"
 import { prefetchMove, useGetMoveSuspended } from "~/queries/move"
-import { Route } from "./+types/Move"
+import type { Route } from "./+types/Move"
 import { Suspense } from "react"
 import { Centered } from "~/components/Centered/Centered"
 
@@ -29,7 +30,9 @@ export async function loader({ params }: Route.LoaderArgs) {
   return { dehydratedState: dehydrate(queryClient) }
 }
 
-export async function clientLoader(_: Route.ClientLoaderArgs) {}
+export function clientLoader(_: Route.ClientLoaderArgs) {
+  // Intentionally empty
+}
 
 clientLoader.hydrate = true as const
 
@@ -48,6 +51,7 @@ export default function Move(args: Route.ComponentProps) {
 }
 
 export function MoveImpl({ params }: Route.ComponentProps) {
+  // eslint-disable-next-line @typescript-eslint/consistent-type-assertions, @typescript-eslint/no-unsafe-type-assertion
   const { state: pokemonName } = useLocation() as Location<string | null>
 
   const { data: move } = useGetMoveSuspended(params.name)
