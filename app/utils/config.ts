@@ -36,7 +36,6 @@ export function getClientEnv() {
 type CLIENT_ENV = ReturnType<typeof getClientEnv>
 
 declare global {
-  let ENV: CLIENT_ENV
   interface Window {
     ENV: CLIENT_ENV
   }
