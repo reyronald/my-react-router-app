@@ -43,7 +43,7 @@ Architecture patterns to figure out:
   - [x] Don't run CI checks unless label is included
   - [x] Bundle size checker
   - [x] Dangerjs
-- [ ] Environment variables
+- [x] Environment variables
 - [ ] Internationalization
 - [ ] SEO
   - [ ] Remove trailing slashes https://authenticdigital.nz/blog/trailing-slashes-and-seo
