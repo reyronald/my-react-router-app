@@ -8,6 +8,7 @@ import eslintComments from "eslint-plugin-eslint-comments"
 import eslintPluginImportX from "eslint-plugin-import-x"
 import jsxA11y from "eslint-plugin-jsx-a11y"
 import reactPlugin from "eslint-plugin-react"
+import reactCompiler from "eslint-plugin-react-compiler"
 import reactHooks from "eslint-plugin-react-hooks"
 import testingLibrary from "eslint-plugin-testing-library"
 import globals from "globals"
@@ -41,6 +42,16 @@ const config = [
       "react-hooks": reactHooks,
     },
     rules: reactHooks.configs.recommended.rules,
+  },
+
+  {
+    name: "react-compiler/recommended",
+    plugins: {
+      "react-compiler": reactCompiler,
+    },
+    rules: {
+      "react-compiler/react-compiler": "error",
+    },
   },
 
   ...(reactPlugin.configs.flat?.recommended ? [reactPlugin.configs.flat.recommended] : []),
