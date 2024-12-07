@@ -5,6 +5,7 @@ const schema = z.object({
   SOME_CONFIG_VALUE: z.string(),
   LOGGING_THRESHOLD: z.enum(["error", "warn", "info", "debug"] as const),
   DATABASE_URL: z.string(),
+  PRISMA_QUERY_LOG: z.enum(["true", "false"]).optional(),
 })
 
 declare global {

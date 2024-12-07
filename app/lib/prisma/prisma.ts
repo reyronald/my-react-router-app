@@ -4,7 +4,7 @@ import chalk from "chalk"
 import { createPrismaQueryEventHandler } from "prisma-query-log"
 import { color, colorizeSQLQuery } from "./colorizeSQLQuery"
 
-let _queryLoggerEnabled = true
+let _queryLoggerEnabled = process.env.PRISMA_QUERY_LOG === "true"
 
 export const enablePrismaQueryLogger = () => (_queryLoggerEnabled = true)
 
@@ -20,33 +20,34 @@ export const db = remember("db", () => {
     ],
   })
 
-  db.$on("query", (e) => {
-    const logThreshold = 20
+  if (process.env.NODE_ENV !== "production") {
+    db.$on("query", (e) => {
+      if (!_queryLoggerEnabled) return
 
-    const durationColor =
-      e.duration < logThreshold * 1.1
-        ? "green"
-        : e.duration < logThreshold * 1.2
-        ? "blue"
-        : e.duration < logThreshold * 1.3
-        ? "yellow"
-        : e.duration < logThreshold * 1.4
-        ? "redBright"
-        : "red"
-    const dur = chalk[durationColor](`${e.duration.toString()}ms`)
+      const logThreshold = 20
 
-    createPrismaQueryEventHandler({
-      format: true,
-      logger: (query) => {
-        if (!_queryLoggerEnabled) return
+      const durationColor =
+        e.duration < logThreshold * 1.1
+          ? "green"
+          : e.duration < logThreshold * 1.2
+          ? "blue"
+          : e.duration < logThreshold * 1.3
+          ? "yellow"
+          : e.duration < logThreshold * 1.4
+          ? "redBright"
+          : "red"
+      const dur = chalk[durationColor](`${e.duration.toString()}ms`)
 
-        // @todo print query duration
-        const queryColored = colorizeSQLQuery(query)
-        console.log(color.blue("prisma:query") + ` - ${dur}`)
-        console.log(queryColored)
-      },
-    })(e)
-  })
+      createPrismaQueryEventHandler({
+        format: true,
+        logger: (query) => {
+          const queryColored = colorizeSQLQuery(query)
+          console.log(`${color.blue("prisma:query")} - ${dur}`)
+          console.log(queryColored)
+        },
+      })(e)
+    })
+  }
 
   return db
 })
