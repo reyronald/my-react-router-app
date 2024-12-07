@@ -56,7 +56,7 @@ Architecture patterns to figure out:
 - [ ] Rate Limiting
 - [ ] CORS
 - [ ] Content Security Policy
-- [ ] Database ORM
+- [x] Database ORM
 - [ ] Service Workers for caching files
 - [ ] Web Workers
 
