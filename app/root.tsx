@@ -20,7 +20,7 @@ import { ErrorBoundaryImpl } from "~/components/ErrorBoundaryImpl/ErrorBoundaryI
 import { getClientEnv } from "./utils/config"
 
 import type { Info } from "./+types/root"
-import { db, initDb } from "./server/db/prisma"
+import { initDb } from "./server/db/prisma"
 
 import "./_tailwind-directives.css"
 import "./app.css"
@@ -42,11 +42,6 @@ export const meta: MetaFunction = () => [{ title: "My react router app" }]
 
 export async function loader() {
   await initDb()
-
-  const users = await db.user.findMany()
-
-  console.log({ users })
-
   const env = getClientEnv()
   return { env }
 }

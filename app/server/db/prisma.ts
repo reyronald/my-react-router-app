@@ -1,16 +1,8 @@
+import { remember } from "@epic-web/remember"
 import { PrismaClient } from "@prisma/client"
 import chalk from "chalk"
 import { createPrismaQueryEventHandler } from "prisma-query-log"
 import { color, colorizeSQLQuery } from "./colorizeSQLQuery"
-
-export const db = new PrismaClient({
-  errorFormat: process.env.NODE_ENV === "production" ? "colorless" : "pretty",
-  log: [
-    { level: "query", emit: "event" },
-    { level: "error", emit: "stdout" },
-    { level: "warn", emit: "stdout" },
-  ],
-})
 
 let _queryLoggerEnabled = true
 
@@ -18,8 +10,15 @@ export const enablePrismaQueryLogger = () => (_queryLoggerEnabled = true)
 
 export const disablePrismaQueryLogger = () => (_queryLoggerEnabled = false)
 
-export async function initDb() {
-  await db.$connect()
+export const db = remember("db", () => {
+  const db = new PrismaClient({
+    errorFormat: process.env.NODE_ENV === "production" ? "colorless" : "pretty",
+    log: [
+      { level: "query", emit: "event" },
+      { level: "error", emit: "stdout" },
+      { level: "warn", emit: "stdout" },
+    ],
+  })
 
   db.$on("query", (e) => {
     const logThreshold = 20
@@ -49,5 +48,5 @@ export async function initDb() {
     })(e)
   })
 
-  return () => db.$disconnect()
-}
+  return db
+})

@@ -13,6 +13,8 @@
     "coverage": "vitest run --coverage",
     "prettier:check": "prettier . -c",
     "db:generate": "prisma generate",
+    "db:migrate": "prisma migrate",
+    "db:migrate:create": "prisma migrate dev -- --create-only",
     "lint": "eslint .",
     "lint:ci": "eslint . --max-warnings=0",
     "lint:file": "eslint",
@@ -24,6 +26,7 @@
     "danger": "danger"
   },
   "dependencies": {
+    "@epic-web/remember": "^1.1.0",
     "@prisma/client": "^6.0.1",
     "@react-router/node": "^7.0.0",
     "@react-router/serve": "^7.0.0",
@@ -97,5 +100,9 @@
     "workerDirectory": [
       "public"
     ]
+  },
+  "prisma": {
+    "schema": "app/server/db/schema.prisma",
+    "seed": "node --experimental-strip-types app/server/db/seed.ts"
   }
 }

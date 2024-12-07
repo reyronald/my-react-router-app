@@ -14,3 +14,4 @@ storybook-static
 
 # SQLite database
 app/server/db/data.db
+app/server/db/data.db-journal

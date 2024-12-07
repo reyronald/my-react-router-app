@@ -7,18 +7,12 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model Post {
-    id        Int     @id @default(autoincrement())
-    title     String
-    content   String?
-    published Boolean @default(false)
-    author    User?   @relation(fields: [authorId], references: [id])
-    authorId  Int?
-}
+model Comment {
+    id          Int    @id @default(autoincrement())
+    pokemonName String
+    author      String
+    content     String
 
-model User {
-    id    Int     @id @default(autoincrement())
-    email String  @unique
-    name  String?
-    posts Post[]
+    createdAt DateTime @default(now())
+    updatedAt DateTime @default(now()) @updatedAt
 }
