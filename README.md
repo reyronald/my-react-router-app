@@ -30,9 +30,12 @@ Architecture patterns to figure out:
 - [x] Storybook
   - [x] Build and deploy to Github Pages
 - [x] Testing with Vitest
+      See https://www.prisma.io/blog/testing-series-1-8eRB5p0Y8o
   - [x] MSW
   - [ ] CI: Sharding
   - [ ] CI: GH Actions reporter
+  - [x] Acceptance
+  - [ ] Cypress/Playwright
 - [x] Linting
   - [x] Make sure warings fail on CI
   - [ ] React compiler eslint-plugin-react-compiler
@@ -56,7 +59,8 @@ Architecture patterns to figure out:
 - [ ] Rate Limiting
 - [ ] CORS
 - [ ] Content Security Policy
-- [ ] Database ORM
+- [x] Database ORM
+- [ ] Consider tRPC instead of regular fetch
 - [ ] Service Workers for caching files
 - [ ] Web Workers
 
@@ -73,6 +77,9 @@ Run the dev server:
 ```shellscript
 npm run dev
 ```
+
+> [!NOTE]
+> For the Prisma CLI commands to work you need an `.env` file in the root of the project that has the value for `DATABASE_URL`. You can do that manually and get the value from `.env.local`, or just run `cp .env.local .env`
 
 ## Deployment
 

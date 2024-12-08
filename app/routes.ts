@@ -15,4 +15,5 @@ export default [
 
   // resource routes
   route("/api/pokemon/:name", "resource-routes/pokemon.ts"),
+  route("/api/pokemon/:name/comments", "resource-routes/pokemon-comments.ts"),
 ] satisfies RouteConfig

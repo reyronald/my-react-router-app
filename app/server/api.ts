@@ -1,3 +1,6 @@
+import type { Comment } from "@prisma/client"
+import superjson, { type SuperJSONResult } from "superjson"
+
 type Pokemon = {
   name: string
   url: string
@@ -70,6 +73,13 @@ export const api = {
   async getPokemon(name: string): Promise<PokemonType> {
     const res = await fetch(`/api/pokemon/${name}`)
     return res.json() as Promise<PokemonType>
+  },
+
+  async getPokemonComments(name: string): Promise<Comment[]> {
+    const res = await fetch(`/api/pokemon/${name}/comments`)
+    const json = (await res.json()) as SuperJSONResult
+    const data = superjson.deserialize<Comment[]>(json)
+    return data
   },
 
   async getAbility(idOrName: string): Promise<Ability> {

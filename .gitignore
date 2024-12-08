@@ -11,3 +11,7 @@ coverage
 tsconfig.tsbuildinfo
 
 storybook-static
+
+# SQLite database
+*.db
+*.db-journal

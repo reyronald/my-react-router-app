@@ -31,9 +31,7 @@ const config = [
 
   pluginJs.configs.recommended,
 
-  // eslint-disable-next-line import-x/no-named-as-default-member
   ...tseslint.configs.strictTypeChecked,
-  // eslint-disable-next-line import-x/no-named-as-default-member
   ...tseslint.configs.stylisticTypeChecked,
 
   react.configs.recommended,
@@ -86,6 +84,7 @@ const config = [
       "@typescript-eslint/consistent-type-assertions": ["error", { assertionStyle: "never" }],
       "@typescript-eslint/array-type": "off",
       "@typescript-eslint/switch-exhaustiveness-check": "error",
+      "import-x/no-named-as-default-member": "off",
     },
   },
 
@@ -103,6 +102,7 @@ const config = [
       "@typescript-eslint/no-unsafe-type-assertion": "off",
       "@typescript-eslint/no-unsafe-member-access": "off",
       "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
       "@typescript-eslint/no-explicit-any": "off",
     },
   },

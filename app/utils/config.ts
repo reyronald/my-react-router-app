@@ -1,8 +1,11 @@
 import { z } from "zod"
 
 const schema = z.object({
-  NODE_ENV: z.enum(["production", "development", "test"] as const),
+  NODE_ENV: z.enum(["production", "development", "test"]),
   SOME_CONFIG_VALUE: z.string(),
+  LOGGING_THRESHOLD: z.enum(["error", "warn", "info", "debug"]),
+  DATABASE_URL: z.string(),
+  PRISMA_QUERY_LOG: z.enum(["true", "false"]).optional(),
 })
 
 declare global {
