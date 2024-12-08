@@ -86,6 +86,7 @@ const config = [
       "@typescript-eslint/consistent-type-assertions": ["error", { assertionStyle: "never" }],
       "@typescript-eslint/array-type": "off",
       "@typescript-eslint/switch-exhaustiveness-check": "error",
+      "import-x/no-named-as-default-member": "off",
     },
   },
 

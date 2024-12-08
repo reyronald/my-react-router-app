@@ -9,7 +9,27 @@ const commentData: Prisma.CommentCreateInput[] = [
     content: "Lorem ipsum dolor sit amet",
   },
   {
-    pokemonName: "charmander",
+    pokemonName: "bulbasaur",
+    author: "Jane Doe",
+    content: "I love water types!",
+  },
+  {
+    pokemonName: "bulbasaur",
+    author: "Ash Ketchum",
+    content: "Gotta catch 'em all!",
+  },
+  {
+    pokemonName: "bulbasaur",
+    author: "Misty",
+    content: "Eevee is so cute!",
+  },
+  {
+    pokemonName: "bulbasaur",
+    author: "Brock",
+    content: "Jigglypuff's song is mesmerizing.",
+  },
+  {
+    pokemonName: "bulbasaur",
     author: "John Smith",
     content: "The declaration of independence",
   },

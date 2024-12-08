@@ -45,57 +45,60 @@ export default function Pokemon({ params }: Route.ComponentProps) {
   if (error || errorPokemonComments) return <ErrorBoundaryImpl error={error} />
 
   return (
-    <>
-      <div className="flex flex-col gap-4">
-        <StyledLink to="/pokemon">Back</StyledLink>
+    <div className="w-full space-y-10">
+      <StyledLink to="/pokemon">Back</StyledLink>
 
-        <h1 className="text-4xl font-bold mb-16">{pokemon.name}</h1>
+      <div className="flex justify-between w-full">
+        <div className="flex flex-col gap-4">
+          <h1 className="text-4xl font-bold mb-16">{pokemon.name}</h1>
 
-        <img
-          src={pokemon.sprites.front_default}
-          alt={pokemon.name}
-          width={96}
-          height={96}
-          className="w-48 h-48 mx-auto"
-        />
+          <img
+            src={pokemon.sprites.front_default}
+            alt={pokemon.name}
+            width={96}
+            height={96}
+            className="w-48 h-48 mx-auto"
+          />
 
-        <p className="text-xl font-bold">Abilities</p>
+          <p className="text-xl font-bold">Abilities</p>
 
-        <ul className="list-disc pl-8">
-          {pokemon.abilities.map((ability) => (
-            <li key={ability.ability.name}>
-              <StyledLink to={`/ability/${ability.ability.name}`} state={pokemon.name}>
-                {ability.ability.name}
-              </StyledLink>
-            </li>
-          ))}
-        </ul>
+          <ul className="list-disc pl-8">
+            {pokemon.abilities.map((ability) => (
+              <li key={ability.ability.name}>
+                <StyledLink to={`/ability/${ability.ability.name}`} state={pokemon.name}>
+                  {ability.ability.name}
+                </StyledLink>
+              </li>
+            ))}
+          </ul>
 
-        <p className="text-xl font-bold">Moves</p>
+          <p className="text-xl font-bold">Moves</p>
 
-        <ul className="list-disc pl-8">
-          {pokemon.moves.map((move) => (
-            <li key={move.move.name}>
-              <StyledLink to={`/move/${move.move.name}`} state={pokemon.name}>
-                {move.move.name}
-              </StyledLink>
-            </li>
-          ))}
-        </ul>
+          <ul className="list-disc pl-8">
+            {pokemon.moves.map((move) => (
+              <li key={move.move.name}>
+                <StyledLink to={`/move/${move.move.name}`} state={pokemon.name}>
+                  {move.move.name}
+                </StyledLink>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div>
+          <h2 className="text-2xl font-bold ">Comments</h2>
+
+          <ul className="mt-4">
+            {pokemonComments.map((comment) => (
+              <li key={comment.id} className="mb-4">
+                <p className="text-lg font-bold">{comment.author}</p>
+                <p className="text-gray-600">{comment.content}</p>
+                <p className="text-gray-400 text-sm">{comment.createdAt.toString()}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-
-      <div>
-        <h2 className="text-2xl font-bold ">Comments</h2>
-
-        <ul className="mt-4">
-          {pokemonComments.map((comment) => (
-            <li key={comment.id} className="mb-4">
-              <p className="text-lg font-bold">{comment.author}</p>
-              <p className="text-gray-600">{comment.content}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+    </div>
   )
 }
