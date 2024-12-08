@@ -15,6 +15,7 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate",
     "db:migrate:create": "prisma migrate dev -- --create-only",
+    "db:studio": "dotenv -e .env.local prisma studio",
     "lint": "eslint .",
     "lint:ci": "eslint . --max-warnings=0",
     "lint:file": "eslint",
@@ -67,6 +68,7 @@
     "autoprefixer": "^10.4.20",
     "close-with-grace": "^2.1.0",
     "danger": "^12.3.3",
+    "dotenv-cli": "^7.4.4",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-import-resolver-typescript": "^3.6.3",
@@ -102,7 +104,7 @@
     ]
   },
   "prisma": {
-    "schema": "app/server/db/schema.prisma",
-    "seed": "node --experimental-strip-types app/server/db/seed.ts"
+    "schema": "prisma/schema.prisma",
+    "seed": "node --experimental-strip-types prisma/seed.ts"
   }
 }
