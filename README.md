@@ -34,7 +34,7 @@ Architecture patterns to figure out:
   - [x] MSW
   - [ ] CI: Sharding
   - [ ] CI: GH Actions reporter
-  - [ ] Acceptance
+  - [x] Acceptance
   - [ ] Cypress/Playwright
 - [x] Linting
   - [x] Make sure warings fail on CI
