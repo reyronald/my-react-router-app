@@ -1,3 +1,5 @@
+import type { Comment } from "@prisma/client"
+
 type Pokemon = {
   name: string
   url: string
@@ -70,6 +72,11 @@ export const api = {
   async getPokemon(name: string): Promise<PokemonType> {
     const res = await fetch(`/api/pokemon/${name}`)
     return res.json() as Promise<PokemonType>
+  },
+
+  async getPokemonComments(name: string): Promise<Comment[]> {
+    const res = await fetch(`/api/pokemon/${name}/comments`)
+    return res.json() as Promise<Comment[]>
   },
 
   async getAbility(idOrName: string): Promise<Ability> {
