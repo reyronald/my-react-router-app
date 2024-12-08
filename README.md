@@ -57,6 +57,7 @@ Architecture patterns to figure out:
 - [ ] CORS
 - [ ] Content Security Policy
 - [x] Database ORM
+- [ ] Consider tRPC instead of regular fetch
 - [ ] Service Workers for caching files
 - [ ] Web Workers
 

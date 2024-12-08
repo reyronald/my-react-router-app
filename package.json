@@ -14,7 +14,7 @@
     "prettier:check": "prettier . -c",
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate",
-    "db:migrate:create": "prisma migrate dev -- --create-only",
+    "db:migrate:create": "prisma migrate dev --create-only",
     "db:reset": "prisma migrate reset",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",

@@ -26,10 +26,7 @@ export const prefetchPokemon = (queryClient: QueryClient, name: string) => {
 export const useGetPokemonComments = (name: string) => {
   const query = useQuery({
     queryKey: getPokemonCommentsQueryKey(name),
-    queryFn: async () => {
-      const data = await api.getPokemonComments(name)
-      return data
-    },
+    queryFn: () => api.getPokemonComments(name),
   })
 
   return query
