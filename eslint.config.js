@@ -31,9 +31,7 @@ const config = [
 
   pluginJs.configs.recommended,
 
-  // eslint-disable-next-line import-x/no-named-as-default-member
   ...tseslint.configs.strictTypeChecked,
-  // eslint-disable-next-line import-x/no-named-as-default-member
   ...tseslint.configs.stylisticTypeChecked,
 
   react.configs.recommended,

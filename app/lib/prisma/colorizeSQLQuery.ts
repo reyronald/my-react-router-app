@@ -33,9 +33,9 @@ export function colorizeSQLQuery(sqlQuery: string) {
     .replaceAll(/".*"/g, replacer(QUOTES, tokens.quotes))
     .replaceAll(/(?:\d+(?:\.\d+)?)/g, replacer(NUMBER, tokens.numbers))
     // Repalce them back with colors
-    .replaceAll(KEYWORD, () => color.Lavender(tokens.keywords.shift() || ""))
-    .replaceAll(QUOTES, () => color.cyan(tokens.quotes.shift() || ""))
-    .replaceAll(NUMBER, () => color.mandy(tokens.numbers.shift() || ""))
+    .replaceAll(KEYWORD, () => color.Lavender(tokens.keywords.shift() ?? ""))
+    .replaceAll(QUOTES, () => color.cyan(tokens.quotes.shift() ?? ""))
+    .replaceAll(NUMBER, () => color.mandy(tokens.numbers.shift() ?? ""))
     .trim()
 
   return sqlQueryColored

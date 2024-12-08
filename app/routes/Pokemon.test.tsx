@@ -14,6 +14,9 @@ describe("Pokemon", () => {
       http.get("/api/pokemon/bulbasaur", () => {
         return HttpResponse.json(getDummyPokemon())
       }),
+      http.get("/api/pokemon/bulbasaur/comments", () => {
+        return HttpResponse.json({ json: [] })
+      }),
     )
 
     const Stub = createRoutesStub([
@@ -44,12 +47,18 @@ describe("Pokemon", () => {
 
     await screen.findByText("Moves")
     await screen.findByText("razor-wind")
+
+    await screen.findByRole("heading", { name: "Comments" })
+    await screen.findByText("No comments yet.")
   })
 
   it("renders error state", async () => {
     server.use(
       http.get("/api/pokemon/bulbasaur", () => {
         return HttpResponse.error()
+      }),
+      http.get("/api/pokemon/bulbasaur/comments", () => {
+        return HttpResponse.json({ json: [] })
       }),
     )
 

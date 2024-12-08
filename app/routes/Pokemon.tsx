@@ -86,17 +86,21 @@ export default function Pokemon({ params }: Route.ComponentProps) {
         </div>
 
         <div>
-          <h2 className="text-2xl font-bold ">Comments</h2>
+          <h2 className="text-2xl font-bold mb-4">Comments</h2>
 
-          <ul className="mt-4 space-y-6">
-            {pokemonComments.map((comment) => (
-              <li key={comment.id} className="mb-4">
-                <p className="text-lg font-bold">{comment.author}</p>
-                <p className="text-gray-300">{comment.content}</p>
-                <p className="text-gray-400 text-xs mt-2">{comment.createdAt.toString()}</p>
-              </li>
-            ))}
-          </ul>
+          {pokemonComments.length === 0 ? (
+            <p className="text-gray-400">No comments yet.</p>
+          ) : (
+            <ul className="space-y-6">
+              {pokemonComments.map((comment) => (
+                <li key={comment.id} className="mb-4">
+                  <p className="text-lg font-bold">{comment.author}</p>
+                  <p className="text-gray-300">{comment.content}</p>
+                  <p className="text-gray-400 text-xs mt-2">{comment.createdAt.toString()}</p>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>

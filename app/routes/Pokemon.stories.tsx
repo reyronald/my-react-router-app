@@ -58,7 +58,12 @@ export const RouteErrorResponse = {
         params: {},
         id: "root",
         pathname: "string",
-        data: undefined,
+        data: {
+          env: {
+            MODE: "test",
+            SOME_CONFIG_VALUE: "string",
+          },
+        },
         handle: undefined,
       },
       {
