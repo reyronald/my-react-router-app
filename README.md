@@ -30,9 +30,12 @@ Architecture patterns to figure out:
 - [x] Storybook
   - [x] Build and deploy to Github Pages
 - [x] Testing with Vitest
+      See https://www.prisma.io/blog/testing-series-1-8eRB5p0Y8o
   - [x] MSW
   - [ ] CI: Sharding
   - [ ] CI: GH Actions reporter
+  - [ ] Acceptance
+  - [ ] Cypress/Playwright
 - [x] Linting
   - [x] Make sure warings fail on CI
   - [ ] React compiler eslint-plugin-react-compiler

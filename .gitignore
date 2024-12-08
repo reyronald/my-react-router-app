@@ -13,5 +13,5 @@ tsconfig.tsbuildinfo
 storybook-static
 
 # SQLite database
-data.db
-data.db-journal
+*.db
+*.db-journal

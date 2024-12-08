@@ -1,4 +1,4 @@
-import { describe, expect, it, vi } from "vitest"
+import { describe, expect, it } from "vitest"
 import { db } from "~/lib/prisma/prisma"
 import { commentsDb } from "./comments.db"
 
@@ -7,32 +7,40 @@ describe("app/domain/comments/comments.db.ts", () => {
     // Arrange
     const mockComments = [
       {
+        pokemonName: "Pikachu",
+        content: "Great!",
+        author: "John Smith",
+      },
+      {
+        pokemonName: "Pikachu",
+        content: "Awesome!",
+        author: "Mary Jane",
+      },
+    ]
+
+    await db.comment.createMany({ data: mockComments })
+
+    // Act
+    const result = await commentsDb.getComment("Pikachu")
+
+    // Assert
+    expect(result).toStrictEqual([
+      {
         id: 1,
         pokemonName: "Pikachu",
         content: "Great!",
         author: "John Smith",
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: expect.any(Date),
+        updatedAt: expect.any(Date),
       },
       {
         id: 2,
         pokemonName: "Pikachu",
         content: "Awesome!",
         author: "Mary Jane",
-        createdAt: new Date(),
-        updatedAt: new Date(),
+        createdAt: expect.any(Date),
+        updatedAt: expect.any(Date),
       },
-    ]
-    const findManySpy = vi.spyOn(db.comment, "findMany").mockResolvedValueOnce(mockComments)
-
-    // Act
-    const result = await commentsDb.getComment("Pikachu")
-
-    // Assert
-    expect(result).toStrictEqual(mockComments)
-    expect(findManySpy).toHaveBeenCalledWith({
-      where: { pokemonName: "Pikachu" },
-      orderBy: { createdAt: "asc" },
-    })
+    ])
   })
 })

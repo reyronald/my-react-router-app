@@ -1,3 +1,5 @@
+import "./db-setup.ts"
+
 import { cleanup } from "@testing-library/react"
 import { afterEach, beforeEach, vi, type MockInstance } from "vitest"
 
