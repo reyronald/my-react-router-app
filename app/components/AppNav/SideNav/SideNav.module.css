@@ -1,0 +1,158 @@
+.sideNav {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: var(--grey-300);
+
+  > div {
+    height: 72px;
+    display: grid;
+    place-items: center;
+    grid-template-columns: auto 1fr;
+  }
+}
+
+.menuButton {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.offcanvas {
+  --bs-offcanvas-width: 100%;
+
+  --transition-duration: 100ms;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logoContainer {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.offcanvasBody {
+  padding-inline: 3.75rem;
+
+  @media (width <= 904.98px) {
+    padding: 0 2rem;
+  }
+
+  @media (width <= 599.98px) {
+    padding: 0 1rem;
+  }
+}
+
+.canvasClose {
+  font-size: 1.125rem;
+  outline: none;
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  &:focus-visible {
+    outline: 0.125rem solid var(--brand-tertiary-500);
+    outline-offset: -0.125rem;
+    box-shadow: none;
+  }
+
+  :global(.sl-icon) {
+    background: var(--grey-800);
+    vertical-align: middle;
+  }
+}
+
+.menuUl {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menuLi {
+  border-bottom: 1px solid var(--grey-300);
+
+  .menuItemDetails summary,
+  .menuItem {
+    font-size: 1.125rem;
+    margin-block: 24px;
+  }
+
+  .helpMenuItemDetails summary {
+    font-size: 1rem;
+  }
+}
+
+.menuItemDetails {
+  summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  summary::marker,
+  summary::-webkit-details-marker {
+    display: none; /* 👈 For Safari */
+    content: '';
+  }
+
+  .icon {
+    transition-property: transform, translate, scale, rotate;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-timing-function);
+  }
+
+  &:open .icon {
+    transform: rotate(180deg);
+  }
+
+  /* Expand & Collapse Animation */
+  @supports (interpolate-size: allow-keywords) {
+    interpolate-size: allow-keywords;
+  }
+  @supports selector(::details-content) {
+    --duration: 0.1s;
+
+    &::details-content {
+      transition:
+        height var(--duration) ease-out,
+        content-visibility var(--duration) allow-discrete;
+      height: 0;
+      overflow: clip;
+    }
+
+    &[open]::details-content {
+      height: auto;
+    }
+  }
+}
+
+.subMenuLi {
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+  padding: 0.625rem 0;
+
+  a:not(:hover) {
+    text-decoration: none;
+  }
+}
+
+.menuItem {
+  a {
+    text-decoration: none;
+  }
+}
+
+.menuWithIcon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.utilityMenuUl {
+  margin-left: 32px;
+}
+
+.email {
+  color: var(--grey-700);
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+}

@@ -1,0 +1,90 @@
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Components/AppNav" />
+
+# AppNav
+
+`AppNav` is a navigation component that includes a top navigation bar on wide viewports and a side navigation drawer on narrower screen sizes like tablets and mobile devices.
+
+## Improvements over the previous implementation
+
+`AppNav` provides the following:
+
+1. Automatically closes the tablet/mobile navigation drawer after a successful navigation.
+2. "Skip to content" and "Skip to footer" now work properly.
+3. All navigation items are now read as links by screen readers, because of the proper routing implementation that replaces the workaround mentioned above.
+4. Provides subtle transitions and animations on certain interactions like menu expansion, hover states and so on.
+5. The size of the outline of the logo's link focus state now matches the rest of the navigation menu links.
+
+## Features
+
+- **Responsive Design**: Desktop navigation is displayed as a top navigation bar, while tablet and mobile devices use a side navigation drawer.
+- **Feature Toggle Integration**: Dynamically shows/hides menu items based on feature flags.
+- **Analytics Tracking**: Built-in event tracking for navigation interactions.
+- **Keyboard Support**: Supports keyboard navigation for dropdowns and menu items in all viewports.
+- **Screen Reader Support**: All navigation items, buttons and menus are announced as desired.
+- **Mixed Content Types**: Supports both link items and custom JSX components in menus.
+- **Auto-close Behavior**: Mobile drawer automatically closes on route changes.
+- **Interactive States**: Hover, focus, focus-visible and active states are accounted for.
+- **Modern CSS Features**: Leverages CSS `@supports` queries for progressive enhancement of `details` element animations.
+- **Bootstrap Integration**: Uses React Bootstrap for Offcanvas (mobile drawer) and Dropdown components.
+- **Animation Support**: Implements smooth transitions using CSS custom properties for timing and easing curves.
+  - Link border color fades in on hover.
+  - Chevron icon rotates with an animation when a menu is expanded or collapsed.
+  - Menus fade in when expanded.
+  - Drawer menus on the sidebar expand and collapse with a slide animation.
+- **Accessibility Features**:
+  - Includes proper ARIA labels and controls.
+  - Uses semantic HTML elements like `<nav>`, `<details>`, and `<summary>`.
+  - Implements visually-hidden-focusable skip links.
+  - Custom SVG icons with proper accessibility attributes.
+
+Tested on Chrome 138 (MacOS X), Firebox 140 (MacOS X) and Safari 18.5 (MacOS X).
+
+In Firefox and Safari the animation of the drawer menu items doesn't work because of lack of support for the CSS property `interpolate-size`, but it still works as expected with no animations.
+
+## Component Structure
+
+```tsx
+// Pseudo-code
+
+<AppNavMenu>
+  <SkipToContent /> 
+
+  <responsive when="md and under">
+    <SideNav />
+  </responsive>
+
+  <responsive when="lg and over">
+    <TopPriorityNav />
+  </responsive>
+</AppNavMenu>
+```
+
+Ronald Rey  
+August 1st, 2025
+
+<style>
+  {
+    /* css */ `
+    .appnav-cover-img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 3rem;
+      max-width: 600px;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    video {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    video + video {
+      margin-top: 2rem;
+    }
+  `
+  }
+</style>

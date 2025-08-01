@@ -1,0 +1,151 @@
+.topPriorityNav {
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: var(--grey-300);
+
+  --transition-duration: 100ms;
+  --transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  height: 80px;
+}
+
+.logoContainer {
+  min-width: 128px;
+  width: 128px;
+  margin-right: 72px;
+
+  a {
+    height: 80px;
+    display: flex;
+
+    &:focus-visible {
+      outline-offset: 0;
+    }
+  }
+}
+
+.menuItemsContainer {
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  height: 80px;
+}
+
+.leftSide {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  position: relative;
+  font-size: 1.125rem;
+}
+
+.ul {
+  list-style: none;
+  display: flex;
+  height: 80px;
+  padding: 0;
+  margin: 0;
+  max-width: 660px;
+  gap: 16px;
+
+  li {
+    min-width: fit-content;
+  }
+}
+
+.moreWrapper {
+  margin-inline-start: 16px;
+}
+
+.dropdownToggle {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  background: none;
+  border: none;
+
+  padding-inline: 0.5rem;
+  padding-block: 1.5rem;
+
+  &::after {
+    content: none;
+  }
+
+  .icon {
+    transition-property: transform, translate, scale, rotate;
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--transition-timing-function);
+  }
+
+  &:global(.show) .icon {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.dropdownMenu {
+  min-width: 270px;
+  padding-block: 24px;
+  border: none;
+  box-shadow: 0 4px 12px #0000001a;
+
+  > * {
+    padding-inline: 24px;
+    padding-block: 10px;
+  }
+
+  > a:active {
+    background-color: var(--grey-200);
+    color: black;
+  }
+
+  &:global(.show) {
+    animation: fadeIn var(--transition-duration) ease-in-out backwards;
+  }
+}
+
+.itemLink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  padding-inline: 0.5rem;
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.email {
+  color: var(--grey-700);
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+}
+
+/* Utility */
+
+.hoverable {
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition-property: border-color;
+  transition-duration: var(--transition-duration);
+  transition-timing-function: var(--transition-timing-function);
+
+  &:hover {
+    border-bottom-color: var(--gray-800);
+  }
+}
