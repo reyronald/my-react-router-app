@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {   
+    --grey-200: #eaebeb;
+    --grey-300: #dcdedf;
+    --grey-700: #5b6062;
+    --grey-800: #3d4142;
+
+    --grey-50: #f9fafa;
+    --grey-100: #f4f4f5;
+    --grey-400: #c3c8cb;
+    --grey-500: #a0a5a7;
+    --grey-600: #71777a;
+    --grey-900: #202223;
+}
