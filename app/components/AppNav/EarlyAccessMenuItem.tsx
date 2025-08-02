@@ -1,7 +1,6 @@
 import { ChevronRightCircle } from "lucide-react"
 import { Badge } from "react-bootstrap"
 
-import { Link } from "react-router"
 import styles from "./EarlyAccessMenuItem.module.css"
 
 export function EarlyAccessMenuItem() {
@@ -11,9 +10,9 @@ export function EarlyAccessMenuItem() {
       <div className="h4">Header</div>
       <div className="body-small">Description</div>
       <div>
-        <Link href="/bills" size="sm">
+        <a href="/bills">
           {"Link text"} <ChevronRightCircle />
-        </Link>
+        </a>
       </div>
     </div>
   )

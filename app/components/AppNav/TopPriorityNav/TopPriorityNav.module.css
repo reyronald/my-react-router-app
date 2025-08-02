@@ -21,6 +21,8 @@
   a {
     height: 80px;
     display: flex;
+    align-items: center;
+    justify-content: center;
 
     &:focus-visible {
       outline-offset: 0;

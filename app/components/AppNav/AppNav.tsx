@@ -1,3 +1,5 @@
+import "bootstrap/dist/css/bootstrap.min.css"
+
 import type { AppNavMenuProps } from "~/components/AppNav/AppNavMenuProps"
 import { SideNav } from "~/components/AppNav/SideNav/SideNav"
 import { SkipToContent } from "~/components/AppNav/SkipToContent"

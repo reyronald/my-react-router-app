@@ -1,11 +1,10 @@
 import { clsx } from "clsx"
 import { Dropdown } from "react-bootstrap"
-import { Link } from "react-router"
 import { Fragment } from "react/jsx-runtime"
 
 import styles from "./TopPriorityNav.module.css"
 
-import { ChevronDown } from "lucide-react"
+import { ChevronDown, Mountain } from "lucide-react"
 import type { AppNavMenuProps } from "~/components/AppNav/AppNavMenuProps"
 import { CircleQuestionMark } from "~/components/AppNav/CircleQuestionMark"
 
@@ -18,9 +17,9 @@ export function TopPriorityNav({ items, user }: AppNavMenuProps) {
     <nav className={styles.topPriorityNav}>
       <div className={clsx(styles.navContainer, "container")}>
         <div className={styles.logoContainer}>
-          <Link to="/" aria-label={"GO_HOME"}>
-            <img alt="logo" aria-hidden src="/public/images/weblogo_127x31.svg" width={128} />
-          </Link>
+          <a href="/" aria-label={"GO_HOME"}>
+            <Mountain size={32} />
+          </a>
         </div>
 
         <div className={styles.menuItemsContainer}>
@@ -43,8 +42,8 @@ export function TopPriorityNav({ items, user }: AppNavMenuProps) {
                             "to" in child ? (
                               <Dropdown.Item
                                 key={child.title}
-                                as={Link}
-                                to={child.to}
+                                as="a"
+                                href={child.to}
                                 onClick={child.onClick}
                               >
                                 {child.title}
@@ -56,13 +55,13 @@ export function TopPriorityNav({ items, user }: AppNavMenuProps) {
                         </Dropdown.Menu>
                       </Dropdown>
                     ) : (
-                      <Link
-                        to={item.to}
+                      <a
+                        href={item.to}
                         className={clsx(styles.itemLink, styles.hoverable)}
                         onClick={item.onClick}
                       >
                         {item.title}
-                      </Link>
+                      </a>
                     )}
                   </li>
                 ))}
@@ -75,7 +74,7 @@ export function TopPriorityNav({ items, user }: AppNavMenuProps) {
                       as="button"
                       className={clsx(styles.dropdownToggle, styles.hoverable)}
                     >
-                      {"NAV_MORE"} <ChevronDown className={styles.icon} />
+                      More <ChevronDown className={styles.icon} />
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu className={styles.dropdownMenu}>
@@ -85,8 +84,8 @@ export function TopPriorityNav({ items, user }: AppNavMenuProps) {
                             <Dropdown.Item
                               key={item.title}
                               className="h4"
-                              as={Link}
-                              to={item.to}
+                              as="a"
+                              href={item.to}
                               onClick={item.onClick}
                             >
                               {item.title}
@@ -97,8 +96,8 @@ export function TopPriorityNav({ items, user }: AppNavMenuProps) {
                                 "to" in child && (
                                   <Dropdown.Item
                                     key={child.title}
-                                    as={Link}
-                                    to={child.to}
+                                    as="a"
+                                    href={child.to}
                                     onClick={child.onClick}
                                   >
                                     {child.title}
@@ -125,7 +124,7 @@ export function TopPriorityNav({ items, user }: AppNavMenuProps) {
                   className={clsx(styles.dropdownToggle, styles.hoverable)}
                 >
                   <CircleQuestionMark />
-                  <span style={{ marginLeft: 8 }}>{"NAV_GET_HELP"}</span>
+                  <span style={{ marginLeft: 8 }}>Get Help</span>
                 </Dropdown.Toggle>
                 <Dropdown.Menu className={styles.dropdownMenu}>
                   <div style={{ textAlign: "center" }}>Coming soon</div>
@@ -149,7 +148,7 @@ export function TopPriorityNav({ items, user }: AppNavMenuProps) {
                     </div>
 
                     {user.items.map((item) => (
-                      <Dropdown.Item key={item.title} as={Link} to={item.to} onClick={item.onClick}>
+                      <Dropdown.Item key={item.title} as="a" href={item.to} onClick={item.onClick}>
                         {item.title}
                       </Dropdown.Item>
                     ))}

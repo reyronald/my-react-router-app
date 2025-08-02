@@ -1,11 +1,10 @@
-import classNames from "classnames"
-import { useEffect, useId, useRef } from "react"
+import { clsx } from "clsx"
+import { useId } from "react"
 import Offcanvas from "react-bootstrap/Offcanvas"
-import { Link, useLocation } from "react-router"
 
 import styles from "./SideNav.module.css"
 
-import { ChevronDown, UserRound, X } from "lucide-react"
+import { ChevronDown, Mountain, UserRound, X } from "lucide-react"
 import type { AppNavMenuProps } from "~/components/AppNav/AppNavMenuProps"
 import { CircleQuestionMark } from "~/components/AppNav/CircleQuestionMark"
 import { useToggler } from "~/hooks/useToggler"
@@ -17,6 +16,12 @@ export function SideNav({ items, user }: AppNavMenuProps) {
   const detailsName = useId()
 
   useCloserOffcanvasOnNavigation(show, toggleShow)
+
+  const logo = (
+    <a href="/" aria-label={"GO_HOME"}>
+      <Mountain size={32} />
+    </a>
+  )
 
   return (
     <nav className={styles.sideNav}>
@@ -31,13 +36,11 @@ export function SideNav({ items, user }: AppNavMenuProps) {
           <HamburgerIcon />
         </button>
 
-        <Logo />
+        {logo}
 
         <Offcanvas id={canvasId} show={show} onHide={toggleShow} className={styles.offcanvas}>
           <Offcanvas.Header>
-            <div className={styles.logoContainer}>
-              <Logo />
-            </div>
+            <div className={styles.logoContainer}>{logo}</div>
 
             <button type="button" className={styles.canvasClose} onClick={toggleShow}>
               <X />
@@ -64,9 +67,9 @@ export function SideNav({ items, user }: AppNavMenuProps) {
                           {item.children.map((child) =>
                             "to" in child ? (
                               <li key={child.title} className={styles.subMenuLi}>
-                                <Link to={child.to} onClick={child.onClick}>
+                                <a href={child.to} onClick={child.onClick}>
                                   {child.title}
-                                </Link>
+                                </a>
                               </li>
                             ) : (
                               child
@@ -76,9 +79,9 @@ export function SideNav({ items, user }: AppNavMenuProps) {
                       </details>
                     ) : (
                       <div className={styles.menuItem}>
-                        <Link key={item.title} to={item.to} onClick={item.onClick}>
+                        <a href={item.to} key={item.title} onClick={item.onClick}>
                           {item.title}
-                        </Link>
+                        </a>
                       </div>
                     )}
                   </li>
@@ -89,13 +92,13 @@ export function SideNav({ items, user }: AppNavMenuProps) {
             <ul className={styles.menuUl}>
               <li className={styles.menuLi}>
                 <details
-                  className={classNames(styles.menuItemDetails, styles.helpMenuItemDetails)}
+                  className={clsx(styles.menuItemDetails, styles.helpMenuItemDetails)}
                   name={detailsName}
                 >
                   <summary>
                     <div className={styles.menuWithIcon}>
                       <CircleQuestionMark />
-                      {"NAV_GET_HELP"}
+                      Get Help
                     </div>
                     <ChevronDown className={styles.icon} />
                   </summary>
@@ -115,7 +118,7 @@ export function SideNav({ items, user }: AppNavMenuProps) {
                       <ChevronDown className={styles.icon} />
                     </summary>
 
-                    <ul className={classNames(styles.menuUl, styles.utilityMenuUl)}>
+                    <ul className={clsx(styles.menuUl, styles.utilityMenuUl)}>
                       <li className={styles.subMenuLi}>
                         <div>
                           <div>{user.sponsorName}</div>
@@ -125,9 +128,9 @@ export function SideNav({ items, user }: AppNavMenuProps) {
 
                       {user.items.map((item) => (
                         <li key={item.title} className={styles.subMenuLi}>
-                          <Link to={item.to} onClick={item.onClick}>
+                          <a href={item.to} onClick={item.onClick}>
                             {item.title}
-                          </Link>
+                          </a>
                         </li>
                       ))}
                     </ul>
@@ -142,22 +145,15 @@ export function SideNav({ items, user }: AppNavMenuProps) {
   )
 }
 
-const Logo = () => (
-  <Link to="/" aria-label={"GO_HOME"}>
-    <img aria-hidden alt={"LOGO"} src="/public/images/weblogo_127x31.svg" width={128} />
-  </Link>
-)
-
 function useCloserOffcanvasOnNavigation(show: boolean, toggleShow: () => void) {
-  const location = useLocation()
-  const prevPathnameRef = useRef(location.pathname)
-
-  useEffect(() => {
-    if (prevPathnameRef.current !== location.pathname && show) {
-      toggleShow()
-    }
-    prevPathnameRef.current = location.pathname
-  }, [location.pathname, show, toggleShow])
+  // const location = useLocation()
+  // const prevPathnameRef = useRef(location.pathname)
+  // useEffect(() => {
+  //   if (prevPathnameRef.current !== location.pathname && show) {
+  //     toggleShow()
+  //   }
+  //   prevPathnameRef.current = location.pathname
+  // }, [location.pathname, show, toggleShow])
 }
 
 function HamburgerIcon() {
